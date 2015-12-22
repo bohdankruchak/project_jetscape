@@ -8,3 +8,4 @@ C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.Properties.Res
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\GameForSchool.csproj.GenerateResource.Cache
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.exe
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.pdb
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.NewKey.resources

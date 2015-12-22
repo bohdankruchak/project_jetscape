@@ -50,6 +50,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MathTemplate.cs" />
+    <Compile Include="NewKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewKey.Designer.cs">
+      <DependentUpon>NewKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Options.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +68,9 @@
     <Compile Include="Workspace.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewKey.resx">
+      <DependentUpon>NewKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Options.resx">
       <DependentUpon>Options.cs</DependentUpon>

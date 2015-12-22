@@ -7,217 +7,375 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using test;
 
 
 namespace test
 {
-
     public partial class Form1 : Form
     {
-        enum color_rc { BLUE, TAN, ORANGE, GREEN, BROWN };
-        color_rc active_color = color_rc.BROWN;
-        int size_rect = 30;
-        bool clean_colors = false;
-        Rectangle rc_brown = new Rectangle(0, 0, 50, 20);
-        Rectangle rc_orange = new Rectangle(0, 25, 50, 20);
-        Rectangle rc_blue = new Rectangle(0, 50, 50, 20);
-        Rectangle rc_green = new Rectangle(0, 75, 50, 20);
-        Rectangle rc_tan = new Rectangle(0, 100, 50, 20);
-        SolidBrush active_rc_color = new SolidBrush(Color.Brown);
-        SolidBrush[,] field = new SolidBrush[20, 20];
-        string [,] field_string = new string[20, 20]; 
+        public Workspace workspace_ob = new Workspace();
         public Form1()
         {
             InitializeComponent();
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < workspace_ob.field_ex.width; i++)
             {
-                for (int j = 0; j < 19; j++)
+                for (int j = 0; j < workspace_ob.field_ex.heigth; j++)
                 {
-                    field[i, j] = new SolidBrush(Color.Transparent);
+                    workspace_ob.field_ex.clr_fild[i][j] = new SolidBrush(Color.Transparent);
                 }
             }
-            dataGridView1.Rows.Add("0", "Tan");
-            dataGridView1.Rows.Add("1,2,3", "Brown");
-            dataGridView1.Rows.Add("4,5,6", "Orange");
-            dataGridView1.Rows.Add("7,8,9", "Green");
-            dataGridView1.Rows.Add("10", "Blue");
+            update_dataGridView1();
         }
         string get_string_eq(Color this_color)
         {
-            int numb = 0;
-            int first_numb, second_num;
-            Random rand= new Random();
-            if (this_color == Color.Blue) { numb = 10; }
-            else if (this_color == Color.Brown) 
-            { 
-                numb = rand.Next(1,3); 
+            string result = "";
+            //workspace_ob.keys[dataGridView1.CurrentRow.Index].str;
+            if (workspace_ob.game_mod == Workspace.g_mod.ADDJR) {
+                result = MathTemplate.MathFact_Jr(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
             }
-            else if (this_color == Color.Green)
+            else if (workspace_ob.game_mod == Workspace.g_mod.ADDBAS) {
+                result = MathTemplate.MathFact_Basic(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+            else if (workspace_ob.game_mod == Workspace.g_mod.ADDADV) {
+                result = MathTemplate.MathFact_Advanced(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+            else if (workspace_ob.game_mod == Workspace.g_mod.SUBJR) {
+                result = MathTemplate.MathFact_Jr(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+            else if (workspace_ob.game_mod == Workspace.g_mod.SUBBAS)
             {
-                numb = rand.Next(7, 9);
+                result = MathTemplate.MathFact_Basic(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
             }
-            else if (this_color == Color.Tan)
+            else if (workspace_ob.game_mod == Workspace.g_mod.SUBADV)
             {
-                numb = 0;
+                result = MathTemplate.MathFact_Advanced(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
             }
-            else if (this_color == Color.Orange) 
-            { 
-                numb = rand.Next(4, 6); 
+            else if (workspace_ob.game_mod == Workspace.g_mod.MULTJR)
+            {
+                result = MathTemplate.MathFact_Jr(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
             }
-            first_numb = rand.Next(0, numb);
-            second_num = numb - first_numb;
-            return first_numb+"+"+second_num;
+            else if (workspace_ob.game_mod == Workspace.g_mod.MULTBAS)
+            {
+                result = MathTemplate.MathFact_Basic(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+            else if (workspace_ob.game_mod == Workspace.g_mod.MULTADV)
+            {
+                result = MathTemplate.MathFact_Advanced(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+            else if (workspace_ob.game_mod == Workspace.g_mod.DIVJR)
+            {
+                result = MathTemplate.MathFact_Jr(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+            else if (workspace_ob.game_mod == Workspace.g_mod.DIVBAS)
+            {
+                result = MathTemplate.MathFact_Basic(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+            else if (workspace_ob.game_mod == Workspace.g_mod.DIVADV)
+            {
+                result = MathTemplate.MathFact_Advanced(workspace_ob.keys[dataGridView1.CurrentRow.Index].str, workspace_ob.sign);
+            }
+
+            return result;
         }
-
-
-        private void pnl_colors_Paint(object sender, PaintEventArgs e)
+        void update_dataGridView1()
         {
+            dataGridView1.Rows.Clear();
 
-            Pen myPen = new Pen(Color.Black, 1);
-
-            e.Graphics.DrawRectangle(myPen, rc_blue);
-            e.Graphics.DrawRectangle(myPen, rc_tan);
-            e.Graphics.DrawRectangle(myPen, rc_orange);
-            e.Graphics.DrawRectangle(myPen, rc_green);
-            e.Graphics.DrawRectangle(myPen, rc_brown);
-            e.Graphics.FillRectangle(new SolidBrush(Color.Blue), rc_blue);
-            e.Graphics.FillRectangle(new SolidBrush(Color.Brown), rc_brown);
-            e.Graphics.FillRectangle(new SolidBrush(Color.Tan), rc_tan);
-            e.Graphics.FillRectangle(new SolidBrush(Color.Green), rc_green);
-            e.Graphics.FillRectangle(new SolidBrush(Color.Orange), rc_orange);
-
-
-            Pen chosen_pen = new Pen(Color.Black, 4);
-
-            if(active_rc_color.Color == Color.Blue)
+            for (int i = 0; i < workspace_ob.keys.Count; i++)
             {
-                e.Graphics.DrawRectangle(chosen_pen, rc_blue);
-            }
-            else if (active_rc_color.Color == Color.Orange)
-            {
-                e.Graphics.DrawRectangle(chosen_pen, rc_orange);
-            }
-            else if (active_rc_color.Color == Color.Brown)
-            {
-                e.Graphics.DrawRectangle(chosen_pen, rc_brown);
-            }
-            else if (active_rc_color.Color == Color.Tan)
-            {
-                e.Graphics.DrawRectangle(chosen_pen, rc_tan);
-            }
-            else if (active_rc_color.Color == Color.Green)
-            {
-                e.Graphics.DrawRectangle(chosen_pen, rc_green);
+                dataGridView1.Rows.Add(workspace_ob.keys[i].str, workspace_ob.keys[i].clr.Name);
+                dataGridView1.Rows[i].Cells[1].Style.BackColor = workspace_ob.keys[i].clr;
             }
         }
-
-
-        //Обробник подій нажаття на панель кольорів
-        private void pnl_colors_MouseClick(object sender, MouseEventArgs e)
-        {
-            Pen myPen = new Pen(Color.Black, 2);
-            if (e.Location.X > rc_blue.X && e.Location.X < rc_blue.X + rc_blue.Width && e.Location.Y > rc_blue.Y && e.Location.Y < rc_blue.Y + rc_blue.Height)
-            {
-                active_color = color_rc.BLUE;
-                active_rc_color = new SolidBrush(Color.Blue);
-            }
-            else if (e.Location.X > rc_orange.X && e.Location.X < rc_orange.X + rc_orange.Width && e.Location.Y > rc_orange.Y && e.Location.Y < rc_orange.Y + rc_orange.Height)
-            {
-                active_color = color_rc.ORANGE;
-                active_rc_color = new SolidBrush(Color.Orange);
-            }
-            else if (e.Location.X > rc_brown.X && e.Location.X < rc_brown.X + rc_brown.Width && e.Location.Y > rc_brown.Y && e.Location.Y < rc_brown.Y + rc_brown.Height)
-            {
-                active_color = color_rc.BROWN;
-                active_rc_color = new SolidBrush(Color.Brown);
-            }
-            else if (e.Location.X > rc_tan.X && e.Location.X < rc_tan.X + rc_tan.Width && e.Location.Y > rc_tan.Y && e.Location.Y < rc_tan.Y + rc_tan.Height)
-            {
-                active_color = color_rc.TAN;
-                active_rc_color = new SolidBrush(Color.Tan);
-            }
-            else if (e.Location.X > rc_green.X && e.Location.X < rc_green.X + rc_green.Width && e.Location.Y > rc_green.Y && e.Location.Y < rc_green.Y + rc_green.Height)
-            {
-                active_color = color_rc.GREEN;
-                active_rc_color = new SolidBrush(Color.Green);
-
-            }
-
-            pnl_colors.Refresh();
-        }
-
-
-
-
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < workspace_ob.field_ex.width; i++)
             {
-                for (int j = 0; j < 19; j++)
+                for (int j = 0; j < workspace_ob.field_ex.heigth; j++)
                 {
-                    int x = i * size_rect + 15;
-                    int y = j * size_rect + 27;
+                    int x = i * workspace_ob.field_ex.size_rect + 15;
+                    int y = j * workspace_ob.field_ex.size_rect + 27;
                     Pen myPen = new Pen(Color.Black, 1);
-
-                    if (field[i, j].Color == Color.Blue) { }
-                    e.Graphics.DrawRectangle(myPen, x, y, size_rect, size_rect);
-                    if(clean_colors == false)e.Graphics.FillRectangle(field[i, j], x + 1, y + 1, size_rect - 1, size_rect - 1);
-                    if (field[i, j].Color != Color.Transparent)
+                    e.Graphics.DrawRectangle(myPen, x, y, workspace_ob.field_ex.size_rect, workspace_ob.field_ex.size_rect);
+                    //if clean color is not active filling rect
+                    if (workspace_ob.clean_colors == false) e.Graphics.FillRectangle(workspace_ob.field_ex.clr_fild[i][j], x + 1, y + 1, workspace_ob.field_ex.size_rect - 1, workspace_ob.field_ex.size_rect - 1);
+                    if (workspace_ob.field_ex.clr_fild[i][j].Color != Color.Transparent)
                     {
                         SolidBrush br = new SolidBrush(Color.Black);
-                        RectangleF temp_rc = new RectangleF(x, y, size_rect, size_rect);
+                        RectangleF temp_rc = new RectangleF(x, y, workspace_ob.field_ex.size_rect, workspace_ob.field_ex.size_rect);
                         StringFormat sf = new StringFormat();
+                        Font fn = this.Font;
+                        if (workspace_ob.field_ex.str_fild[i][j].Length > 5)
+                        {
+                            float currentSize = fn.Size;
+                            currentSize -= 1.5F;
+                            fn = new Font(fn.Name, currentSize, fn.Style, fn.Unit);
+                        }
                         sf.Alignment = StringAlignment.Center;
                         sf.LineAlignment = StringAlignment.Center;
-                        e.Graphics.DrawString(field_string[i,j], this.Font, br, temp_rc, sf);
+                        
+                        e.Graphics.DrawString(workspace_ob.field_ex.str_fild[i][j], fn, br, temp_rc, sf);
                     }
                 }
             }
-            clean_colors = false;
+            workspace_ob.clean_colors = false;
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            if ((e.X < 15 || e.X > size_rect * 19 + 15) || (e.Y < 27 || e.Y > size_rect * 19 + 27))
+            if ((e.X < 15 || e.X > workspace_ob.field_ex.size_rect * 19 + 15 + workspace_ob.field_ex.size_rect) || (e.Y < 27 || e.Y > workspace_ob.field_ex.size_rect * 19 + 27 + +workspace_ob.field_ex.size_rect))
             {
                 return;
             }
-            int x_index = (e.X -15) / size_rect;
-            int y_index = (e.Y -27) / size_rect;
-            if (active_color == color_rc.BLUE)
-            {
-                field[x_index, y_index] = new SolidBrush(Color.Blue);
-            }
-            else if (active_color == color_rc.TAN)
-            {
-                field[x_index, y_index] = new SolidBrush(Color.Tan);
-            }
-            else if (active_color == color_rc.ORANGE)
-            {
-                field[x_index, y_index] = new SolidBrush(Color.Orange);
-            }
-            else if (active_color == color_rc.GREEN)
-            {
-                field[x_index, y_index] = new SolidBrush(Color.Green);
-            }
-            else if (active_color == color_rc.BROWN)
-            {
-                field[x_index, y_index] = new SolidBrush(Color.Brown);
-            }
-            field_string[x_index, y_index] = get_string_eq(field[x_index, y_index].Color);
+            int x_index = (e.X - 15) / workspace_ob.field_ex.size_rect;
+            int y_index = (e.Y - 27) / workspace_ob.field_ex.size_rect;
+            workspace_ob.field_ex.clr_fild[x_index][y_index] = workspace_ob.active_rc_color;
+            workspace_ob.field_ex.str_fild[x_index][y_index] = get_string_eq(workspace_ob.field_ex.clr_fild[x_index][y_index].Color);
             Refresh();
         }
 
         private void cleanColorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clean_colors = true;
+            workspace_ob.clean_colors = true;
             Refresh();
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Options op = new Options();
+            op.workspace_ob = this.workspace_ob;
             op.ShowDialog();
+            this.workspace_ob = op.workspace_ob;
+            Refresh();
         }
+
+        private void btn_addKey_Click(object sender, EventArgs e)
+        {
+            NewKey nk = new NewKey();
+            nk.workspace_ob = this.workspace_ob;
+            nk.ShowDialog();
+            this.workspace_ob = nk.workspace_ob;
+            update_dataGridView1();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if(workspace_ob.keys.Count != 0)workspace_ob.active_rc_color = new SolidBrush(workspace_ob.keys[dataGridView1.CurrentRow.Index].clr);
+        }
+        private void btn_deleteKey_Click(object sender, EventArgs e)
+        {
+            if (workspace_ob.keys.Count > 0)
+            {
+                workspace_ob.keys.RemoveAt(dataGridView1.CurrentRow.Index);
+                dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+            }
+        }
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(workspace_ob.isLbuttonDown == true)
+            {
+                if ((e.X < 15 || e.X > workspace_ob.field_ex.size_rect * 19 + 15 + workspace_ob.field_ex.size_rect) || (e.Y < 27 || e.Y > workspace_ob.field_ex.size_rect * 19 + 27 + +workspace_ob.field_ex.size_rect))
+                {
+                    return;
+                }
+                int x_index = (e.X - 15) / workspace_ob.field_ex.size_rect;
+                int y_index = (e.Y - 27) / workspace_ob.field_ex.size_rect;
+                workspace_ob.field_ex.clr_fild[x_index][y_index] = workspace_ob.active_rc_color;
+                workspace_ob.field_ex.str_fild[x_index][y_index] = get_string_eq(workspace_ob.field_ex.clr_fild[x_index][y_index].Color);
+                Refresh();
+            }
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            workspace_ob.isLbuttonDown = true;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            workspace_ob.isLbuttonDown = false;
+        }
+        #region templates_menu
+        private void jrAdditionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ADDJR;
+            workspace_ob.sign = '+';
+            workspace_ob.example_for_input = "2 or 4";
+        }
+
+        private void basicAdditionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ADDBAS;
+            workspace_ob.sign = '+';
+            workspace_ob.example_for_input = "4";
+        }
+
+        private void advancedAdditionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ADDADV;
+            workspace_ob.sign = '+';
+            workspace_ob.example_for_input = "4" + Environment.NewLine + "or" + Environment.NewLine + "3-5" + Environment.NewLine + "or" + Environment.NewLine + "3,4,9";
+        }
+
+        private void jrSubtractionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.SUBJR;
+            workspace_ob.sign = '-';
+            workspace_ob.example_for_input = "2 or 4";
+        }
+
+        private void basicSubtractionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.SUBBAS;
+            workspace_ob.sign = '-';
+            workspace_ob.example_for_input = "4";
+        }
+
+        private void advancedSubtractionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.SUBADV;
+            workspace_ob.sign = '-';
+            workspace_ob.example_for_input = "4" + Environment.NewLine + "or" + Environment.NewLine + "3-5" + Environment.NewLine + "or" + Environment.NewLine + "3,4,9";
+        }
+
+        private void jrMultiplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.MULTJR;
+            workspace_ob.sign = '*';
+            workspace_ob.example_for_input = "2 or 4";
+        }
+
+        private void basicMultiplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.MULTBAS;
+            workspace_ob.sign = '*';
+            workspace_ob.example_for_input = "4";
+        }
+
+        private void advancedMultiplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.MULTADV;
+            workspace_ob.sign = '*';
+            workspace_ob.example_for_input = "4" + Environment.NewLine + "or" + Environment.NewLine + "3-5" + Environment.NewLine + "or" + Environment.NewLine + "3,4,9";
+        }
+
+        private void jrDivisionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.DIVJR;
+            workspace_ob.sign = '/';
+            workspace_ob.example_for_input = "2 or 4";
+        }
+
+        private void basicDivisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.DIVBAS;
+            workspace_ob.sign = '/';
+            workspace_ob.example_for_input = "4";
+        }
+
+        private void advancedDivisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.DIVADV;
+            workspace_ob.sign = '/';
+            workspace_ob.example_for_input = "4" + Environment.NewLine + "or" + Environment.NewLine + "3-5" + Environment.NewLine + "or" + Environment.NewLine + "3,4,9";
+        }
+
+        private void mixedStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.MIXED;
+            workspace_ob.sign = '$';
+        }
+
+        private void counting1999ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.PLCVALCOUN;
+            workspace_ob.sign = '$';
+        }
+
+        private void placeValueToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.PLCVALPLCV;
+            workspace_ob.sign = '$';
+        }
+
+        private void roundingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ROUNDING;
+            workspace_ob.sign = '$';
+        }
+
+        private void additionRegroupingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ADVREGRADD;
+            workspace_ob.sign = '+';
+        }
+
+        private void subtractionRegroupingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ADVREGRSUB;
+            workspace_ob.sign = '-';
+        }
+
+        private void multiplicationRegroupingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ADVREGRMULT;
+            workspace_ob.sign = '*';
+        }
+
+        private void numbersAndOperationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.ADVNUMBANDOP;
+            workspace_ob.sign = '$';
+        }
+
+        private void geometryAndMeasurementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.GEOMANDMES;
+            workspace_ob.sign = '$';
+        }
+
+        private void colorByNumberToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.CLRBYNUM;
+            workspace_ob.sign = '$';
+        }
+
+        private void numberPairsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.CLRBYNUMPAIR;
+            workspace_ob.sign = '$';
+        }
+
+        private void numberRangesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.CLRBYNUMRANGES;
+            workspace_ob.sign = '$';
+        }
+
+        private void fractionNumeratorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.FDPFRNUM;
+            workspace_ob.sign = '$';
+        }
+
+        private void fractionDenominatorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.FDPFRDET;
+            workspace_ob.sign = '$';
+        }
+
+        private void decimalColoringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.FDPDECOL;
+            workspace_ob.sign = '$';
+        }
+
+        private void percentColoringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workspace_ob.game_mod = test.Workspace.g_mod.FDPPECOL;
+            workspace_ob.sign = '$';
+        }
+        #endregion
     }
 }
