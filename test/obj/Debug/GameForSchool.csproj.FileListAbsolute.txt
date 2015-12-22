@@ -1,0 +1,10 @@
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\bin\Debug\test.exe.config
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\bin\Debug\test.exe
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\bin\Debug\test.pdb
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\GameForSchool.csprojResolveAssemblyReference.cache
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.Form1.resources
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.Options.resources
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\GameForSchool.csproj.GenerateResource.Cache
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.exe
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.pdb
