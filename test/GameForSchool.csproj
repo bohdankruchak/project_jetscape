@@ -51,6 +51,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MathTemplate.cs" />
+    <Compile Include="JrInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JrInput.Designer.cs">
+      <DependentUpon>JrInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewKey.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Workspace.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JrInput.resx">
+      <DependentUpon>JrInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewKey.resx">
       <DependentUpon>NewKey.cs</DependentUpon>

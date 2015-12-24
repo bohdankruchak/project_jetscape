@@ -10,247 +10,10 @@ namespace test
     abstract class Interpreter
     {
         //public Interpreter(string s1) { }
-        public virtual int GetResult();
+        public virtual int GetResult(){return 0;}
     }
     class MathTemplate
     {
-        // Генератор стрічки відповідно до заданого ключа
-        private static string GenerateString(Interpreter key, char sign)
-        {
-            Random rand = new Random();
-            string output = "";
-            int first_nmb = 0;
-            int second_nmb = 0;
-            int result = key.GetResult();
-
-            switch (sign)
-            {
-                case '+':
-                    {
-                        first_nmb = rand.Next(0, result);
-                        second_nmb = result - first_nmb;
-
-                        output = first_nmb.ToString() + " + " + second_nmb.ToString();
-                        break;
-                    }
-                case '-':
-                    {
-                        first_nmb = rand.Next(result, result + 20);
-                        second_nmb = first_nmb - result;
-
-                        output = first_nmb.ToString() + " - " + second_nmb.ToString();
-                        break;
-                    }
-                case '/':
-                    {
-                        second_nmb = rand.Next(1, 10);
-                        first_nmb = second_nmb * result;
-
-                        output = first_nmb.ToString() + " / " + second_nmb.ToString();
-                        break;
-                    }
-                case '*':
-                    {
-                        first_nmb = GetRandomDivisor(result);
-                        second_nmb = first_nmb / result;
-                        output = first_nmb.ToString() + " * " + second_nmb.ToString();
-                        break;
-                    }
-            }
-
-            return output;
-        }
-
-        // Генератор стрічки виконання дій у стовпчик
-        private static string GenerateColomnString(Interpreter key, char sign)
-        {
-            Random rand = new Random();
-            string output = "";
-            int first_nmb = 0;
-            int second_nmb = 0;
-            int result = key.GetResult();
-
-            switch (sign)
-            {
-                case '+':
-                    {
-                        first_nmb = rand.Next(0, result);
-                        second_nmb = result - first_nmb;
-
-                        output = first_nmb.ToString() + "\n + " + second_nmb.ToString();
-                        break;
-                    }
-                case '-':
-                    {
-                        first_nmb = rand.Next(result, result + 20);
-                        second_nmb = first_nmb - result;
-
-                        output = first_nmb.ToString() + "\n - " + second_nmb.ToString();
-                        break;
-                    }
-                case '*':
-                    {
-
-
-                        first_nmb = GetRandomDivisor(result);
-                        second_nmb = first_nmb / result;
-                        output = first_nmb.ToString() + "\n * " + second_nmb.ToString();
-                        break;
-                    }
-            }
-
-            return output;
-        }
-
-        // Генератор стрічки з рядом чисел
-        private static string GenerateNumberSeriesString(Interpreter key, int distance)
-        {
-            const int numbers_in_string = 4;
-            Random rand = new Random();
-            int startNumber = 0;
-            List<int> potential_numbers = new List<int>();
-            string output = "";
-
-            for (int i = 0; i < 1000 - (numbers_in_string * distance); i++ )
-            {
-                potential_numbers.Add(i);
-            }
-            int index = rand.Next();
-            startNumber = potential_numbers[index];
-
-            output = String.Format("{0},{1},{2},{3}", startNumber, startNumber + distance, 
-                startNumber + (distance * 2), startNumber + (distance*3));
-            return output;
-        }
-
-        // Генератор стрічки з кутовими значеннями
-        private static string GenerateAnglesString(Interpreter key)
-        {
-            List<int> angles = new List<int>();
-            Random rand = new Random();
-            int final_angle = 0;
-
-            switch(key.GetResult())
-            {
-                //Випадок розгорнутого кута
-                case 0:
-                    {
-                        final_angle = 180;
-                        return final_angle.ToString();
-                    }
-
-                //Випадок прямого кута
-                case 1:
-                    {
-                        final_angle = 90;
-                        return final_angle.ToString();
-                    }
-
-                //Випадок гострого кута
-                case 2:
-                    {
-                        final_angle = rand.Next(1, 89);
-                        return final_angle.ToString();
-                    }
-
-                //Випадок тупого кута
-                case 3:
-                    {
-                        final_angle = rand.Next(91, 179);
-                        return final_angle.ToString();
-                    }
-            }
-            return "";
-        }
-
-        // Генератор стрічки з координатами
-        private static string GenerateQuadrantString(Interpreter key)
-        {
-            Random rand = new Random();
-            int quadrant = key.GetResult();
-            int first_coordinate = 0, second_coordinate = 0;
-            string output = "";
-
-            switch(quadrant)
-            {
-                case 1:
-                    {
-                        first_coordinate = rand.Next(0, 999);
-                        second_coordinate = rand.Next(0, 999);
-                        break;
-                    }
-                case 2:
-                    {
-                        first_coordinate = rand.Next(0, 999);
-                        second_coordinate = rand.Next(-999, 0);
-                        break;
-                    }
-                case 3:
-                    {
-                        first_coordinate = rand.Next(-999, 0);
-                        second_coordinate = rand.Next(-999, 0);
-                        break;
-                    }
-                case 4:
-                    {
-                        first_coordinate = rand.Next(-999, 0);
-                        second_coordinate = rand.Next(0, 999);
-                        break;
-                    }
-            }
-
-            output = first_coordinate.ToString() + "," + second_coordinate.ToString();
-            return output;
-        }
-
-        // Генератор стрічки з іменем фігури
-        private static string GenerateShapeNameString(Interpreter key)
-        {
-            int sides = key.GetResult();
-            Random rand = new Random();
-            string output = "";
-
-            List<string> _3Sides = new List<string>() 
-            { 
-                "right", "triangle", "isoscales", "equilateral"
-            };
-            List<string> _4Sides = new List<string>()
-            { 
-                "parallelogram", "rhombus", "square", "rectangle", "trapezoid"
-            };
-            List<string> MoreSides = new List<string>()
-            { 
-                "hexagon", "pentagon", "octagon"
-            };
-
-            switch (sides)
-            {
-                // Ідентифікатор трикутника
-                case 3:
-                    {
-                        int index = rand.Next(_3Sides.Count);
-                        output = _3Sides[index];
-                        break;
-                    }
-                // Ідентифікатор чотирикутника
-                case 4:
-                    {
-                        int index = rand.Next(_4Sides.Count);
-                        output = _4Sides[index];
-                        break;
-                    }
-                // Ідентифікатор багатокутника
-                case 5:
-                    {
-                        int index = rand.Next(MoreSides.Count);
-                        output = MoreSides[index];
-                        break;
-                    }
-            }
-
-            return output;
-        }
-
         public static string MathFact_Jr(string input, char sign)
         {
             jr_key_interpr key = new jr_key_interpr(input);
@@ -268,6 +31,7 @@ namespace test
         public static string MathFact_Advanced(string input, char sign)
         {
             advanced_key_interpr key = new advanced_key_interpr(input);
+
             return GenerateString(key, sign);
         }
 
@@ -277,7 +41,7 @@ namespace test
 
             // Випадково вибираємо знак операції над числами
             Random rand = new Random();
-            char[] arr_chars = { '+', '-', '*', '/'};
+            char[] arr_chars = { '+', '-', '*', '/' };
             List<char> potential_signs = new List<char>(arr_chars);
             int index = rand.Next(potential_signs.Count);
             char sign = potential_signs[index];
@@ -355,12 +119,316 @@ namespace test
             return GenerateShapeNameString(key);
         }
 
+        public static string Color_By_Numb_Color_By_Numb(string input)
+        {
+            basic_key_interpr key = new basic_key_interpr(input);
+
+            return key.GetResult().ToString();
+        }
+
+        public static string Color_By_Numb_Number_Pairs(string input)
+        {
+            number_pairs_interpr key = new number_pairs_interpr(input);
+
+            return key.GetResult().ToString();
+        }
+
+        public static string Color_By_Numb_Number_Ranges(string input)
+        {
+            number_pairs_interpr key = new number_pairs_interpr(input);
+
+            return key.GetResult().ToString();
+        }
+
+        public static string FDP_Fractions_Numerators(string input)
+        {
+            fraction_numer_denom_interpr key = new fraction_numer_denom_interpr(input);
+
+            return key.GetResult();
+        }
+
+        public static string FDP_Fractions_Denominators(string input)
+        {
+            fraction_numer_denom_interpr key = new fraction_numer_denom_interpr(input);
+
+            return key.GetResult();
+        }
+
+        public static string FDP_Decimal_Place_Value(string input)
+        {
+            fraction_decimal_interpr key = new fraction_decimal_interpr(input);
+
+            return key.GetResult();
+        }
+
+        public static string FDP_Decimal_Sense(string input)
+        {
+            fraction_decimal_sense_interpr key = new fraction_decimal_sense_interpr(input);
+
+            return key.GetResult();
+        }
+
+        public static string FDP_Percent_Equivalence(string input)
+        {
+            fraction_percent_equiv_interpr key = new fraction_percent_equiv_interpr(input);
+
+            return key.GetResult();
+        }
+
+        public static string FDP_Percent_Number_Sense(string input)
+        {
+            fraction_percent_equiv_interpr key = new fraction_percent_equiv_interpr(input);
+
+            return key.GetResult();
+        }
+
+
+        //**********************************************************************
+        //**********************************************************************
+
+        // Генератор стрічки відповідно до заданого ключа
+        private static string GenerateString(Interpreter key, char sign)
+        {
+            Random rand = new Random();
+            string output = "";
+            int first_nmb = 0;
+            int second_nmb = 0;
+            int result = key.GetResult();
+
+            switch (sign)
+            {
+                case '+':
+                    {
+                        first_nmb = rand.Next(0, result);
+                        second_nmb = result - first_nmb;
+
+                        output = first_nmb.ToString() + " + " + second_nmb.ToString();
+                        break;
+                    }
+                case '-':
+                    {
+                        first_nmb = rand.Next(result, result + 20);
+                        second_nmb = first_nmb - result;
+
+                        output = first_nmb.ToString() + " - " + second_nmb.ToString();
+                        break;
+                    }
+                case '/':
+                    {
+                        second_nmb = rand.Next(1, 10);
+                        first_nmb = second_nmb * result;
+
+                        output = first_nmb.ToString() + " / " + second_nmb.ToString();
+                        break;
+                    }
+                case '*':
+                    {
+                        first_nmb = GetRandomDivisor(result);
+                        second_nmb = result / first_nmb;
+                        output = first_nmb.ToString() + " * " + second_nmb.ToString();
+                        break;
+                    }
+            }
+
+            return output;
+        }
+
+        // Генератор стрічки виконання дій у стовпчик
+        private static string GenerateColomnString(Interpreter key, char sign)
+        {
+            Random rand = new Random();
+            string output = "";
+            int first_nmb = 0;
+            int second_nmb = 0;
+            int result = key.GetResult();
+
+            switch (sign)
+            {
+                case '+':
+                    {
+                        first_nmb = rand.Next(0, result);
+                        second_nmb = result - first_nmb;
+
+                        output = first_nmb.ToString() + "\n + " + second_nmb.ToString();
+                        break;
+                    }
+                case '-':
+                    {
+                        first_nmb = rand.Next(result, result + 20);
+                        second_nmb = first_nmb - result;
+
+                        output = first_nmb.ToString() + "\n - " + second_nmb.ToString();
+                        break;
+                    }
+                case '*':
+                    {
+
+
+                        first_nmb = GetRandomDivisor(result);
+                        second_nmb = result / first_nmb;
+                        output = first_nmb.ToString() + "\n * " + second_nmb.ToString();
+                        break;
+                    }
+            }
+
+            return output;
+        }
+
+        // Генератор стрічки з рядом чисел
+        private static string GenerateNumberSeriesString(Interpreter key, int distance)
+        {
+            const int numbers_in_string = 4;
+            Random rand = new Random();
+            int startNumber = 0;
+            List<int> potential_numbers = new List<int>();
+            string output = "";
+
+            for (int i = 0; i < 100 - (numbers_in_string * distance); i++ )
+            {
+                potential_numbers.Add(i);
+            }
+            int index = rand.Next(potential_numbers.Count);
+            startNumber = potential_numbers[index];
+
+            output = String.Format("{0},{1},\n{2},{3}", startNumber, startNumber + distance, 
+                startNumber + (distance * 2), startNumber + (distance*3));
+            return output;
+        }
+
+        // Генератор стрічки з кутовими значеннями
+        private static string GenerateAnglesString(Interpreter key)
+        {
+            List<int> angles = new List<int>();
+            Random rand = new Random();
+            int final_angle = 0;
+
+            switch(key.GetResult())
+            {
+                //Випадок розгорнутого кута
+                case 0:
+                    {
+                        final_angle = 180;
+                        return final_angle.ToString() + (char)176;
+                    }
+
+                //Випадок прямого кута
+                case 1:
+                    {
+                        final_angle = 90;
+                        return final_angle.ToString() + (char)176;
+                    }
+
+                //Випадок гострого кута
+                case 2:
+                    {
+                        final_angle = rand.Next(1, 89);
+                        return final_angle.ToString() + (char)176;
+                    }
+
+                //Випадок тупого кута
+                case 3:
+                    {
+                        final_angle = rand.Next(91, 179);
+                        return final_angle.ToString() + (char)176;
+                    }
+            }
+            return "";
+        }
+
+        // Генератор стрічки з координатами
+        private static string GenerateQuadrantString(Interpreter key)
+        {
+            Random rand = new Random();
+            int quadrant = key.GetResult();
+            int first_coordinate = 0, second_coordinate = 0;
+            string output = "";
+
+            switch(quadrant)
+            {
+                case 1:
+                    {
+                        first_coordinate = rand.Next(0, 999);
+                        second_coordinate = rand.Next(0, 999);
+                        break;
+                    }
+                case 2:
+                    {
+                        first_coordinate = rand.Next(0, 999);
+                        second_coordinate = rand.Next(-999, 0);
+                        break;
+                    }
+                case 3:
+                    {
+                        first_coordinate = rand.Next(-999, 0);
+                        second_coordinate = rand.Next(-999, 0);
+                        break;
+                    }
+                case 4:
+                    {
+                        first_coordinate = rand.Next(-999, 0);
+                        second_coordinate = rand.Next(0, 999);
+                        break;
+                    }
+            }
+
+            output = first_coordinate.ToString() + ",\n" + second_coordinate.ToString();
+            return output;
+        }
+
+        // Генератор стрічки з іменем фігури
+        private static string GenerateShapeNameString(Interpreter key)
+        {
+            int sides = key.GetResult();
+            Random rand = new Random();
+            string output = "";
+
+            List<string> _3Sides = new List<string>() 
+            { 
+                "right", "triangle", "isoscales", "equilateral"
+            };
+            List<string> _4Sides = new List<string>()
+            { 
+                "parallelogram", "rhombus", "square", "rectangle", "trapezoid"
+            };
+            List<string> MoreSides = new List<string>()
+            { 
+                "hexagon", "pentagon", "octagon"
+            };
+
+            switch (sides)
+            {
+                // Ідентифікатор трикутника
+                case 3:
+                    {
+                        int index = rand.Next(_3Sides.Count);
+                        output = _3Sides[index];
+                        break;
+                    }
+                // Ідентифікатор чотирикутника
+                case 4:
+                    {
+                        int index = rand.Next(_4Sides.Count);
+                        output = _4Sides[index];
+                        break;
+                    }
+                // Ідентифікатор багатокутника
+                case 5:
+                    {
+                        int index = rand.Next(MoreSides.Count);
+                        output = MoreSides[index];
+                        break;
+                    }
+            }
+
+            return output;
+        }
+
         private static int GetRandomDivisor(int number)
         {
             List<int> dividers = new List<int>();
             Random rand = new Random();
 
-            for (int i = 1; i < number / 2; i++)
+            for (int i = 1; i < number; i++)
             {
                 if (number % i == 0) dividers.Add(i);
             }
@@ -378,7 +446,6 @@ namespace test
         int second_nmb;
         Random rand = new Random();
 
-        string rulls = "Key data:/n 2 or 3";
         public jr_key_interpr(string s1)
         {
             string[] arr = s1.Split(' ');
@@ -388,7 +455,9 @@ namespace test
 
         public override int GetResult()
         {
-            return rand.Next(first_nmb, second_nmb);
+            int temp = rand.Next(0, 2);
+            if (temp == 0) return first_nmb;
+            else return second_nmb;
         }
     }
 
@@ -470,8 +539,8 @@ namespace test
             string str_final_number = final_number.ToString();
 
             if (final_number < 10 && final_number == peace_number) return true;
-            else if (final_number < 100 && str_final_number[1].ToString() == peace_number.ToString()) return true;
-            else if (final_number < 1000 && str_final_number[2].ToString() == peace_number.ToString()) return true;
+            else if (final_number >= 10 && final_number < 100 && str_final_number[1].ToString() == peace_number.ToString()) return true;
+            else if (final_number >= 100 && final_number < 1000 && str_final_number[2].ToString() == peace_number.ToString()) return true;
             else return false;
         }
 
@@ -480,7 +549,7 @@ namespace test
             string str_final_number = final_number.ToString();
 
             if (final_number > 10 && final_number < 100 && str_final_number[0].ToString() == peace_number.ToString()) return true;
-            else if (final_number < 1000 && str_final_number[1].ToString() == peace_number.ToString()) return true;
+            else if (final_number > 100 && final_number < 1000 && str_final_number[1].ToString() == peace_number.ToString()) return true;
             else return false;
         }
 
@@ -506,7 +575,7 @@ namespace test
                     else if (all_words[i] == "hundreds") isHundreds = true;
                 }
 
-                for(int i = 0; i < 1000; i++)
+                for(int i = 1; i < 1000; i++)
                 {
                     if(isOnes && isNumberInOnes(i, number))
                         potential_numbers.Add(i);
@@ -575,25 +644,17 @@ namespace test
         List<int> potential_numbers = new List<int>();
         public regrouping_interpr(string s1)
         {
-            int input_number = 0;
+            int first_number = 0;
+            int second_number = 0;
             string[] all_words = s1.Split(' ');
-            input_number = int.Parse(all_words[all_words.Count() - 1]);
+            first_number = int.Parse(all_words[1]);
+            second_number = int.Parse(all_words[3]);
 
-            if(input_number < 100)
-            {
-                for (int i = input_number - 5; i < input_number + 5; i++)
-                    potential_numbers.Add(i);
-            }else if(input_number < 1000)
-            {
-                for (int i = input_number - 50; i < input_number + 50; i++)
-                    potential_numbers.Add(i);
-            }
+            result = rand.Next(first_number, second_number);
         }
 
         public override int GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
-            result = potential_numbers[index];
             return result;
         }
     }
@@ -605,43 +666,16 @@ namespace test
         Random rand = new Random();
         List<int> potential_numbers = new List<int>();
 
-        public bool IsPrime(int num)
-        {
-
-            bool _isPrime = true;
-
-            if (num % 2 == 0) return false;
-
-            for (int i = 3; i <= Convert.ToInt32(Math.Sqrt(num)); i = i + 2)
-            {
-
-                if (num % i == 0)
-                {
-
-                    _isPrime = false;
-
-                    break;
-
-                }
-
-            }
-
-            return _isPrime;
-
-        }
-
         public even_odd_interpr(string s1)
         {
-            for (int i = 0; i < 1000; i++)
+            for (int i = 1; i < 1000; i++)
             {
-                if (s1.ToLower() == "even")
+                if (s1.ToLower() == "even" && i % 2 == 0)
                 {
-                    if (IsPrime(i))
-                        potential_numbers.Add(i);
-                }else if(s1.ToLower() == "odd")
+                    potential_numbers.Add(i);
+                }else if(s1.ToLower() == "odd" && i % 2 != 0)
                 {
-                    if (!IsPrime(i))
-                        potential_numbers.Add(i);
+                    potential_numbers.Add(i);
                 }
             }
         }
@@ -779,11 +813,442 @@ namespace test
                 result = 5;// Ідентифікатор багатокутника
             else if (input_str.Contains("4"))
                 result = 4;// Ідентифікатор чотирикутника
-            else if (input_str.Contains("4"))
+            else if (input_str.Contains("3"))
                 result = 3;// Ідентифікатор трикутника
         }
 
         public override int GetResult()
+        {
+            return result;
+        }
+    }
+
+
+
+    //////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    //Клас для інтерпретації ключа типу number pairs
+    class number_pairs_interpr : Interpreter
+    {
+        int result = 0;
+        Random rand = new Random();
+        List<int> potential_numbers = new List<int>();
+
+        public number_pairs_interpr(string s1)
+        {
+            if (s1.Contains(','))
+            {
+                string[] str_numbers = s1.Split(',');
+                for (int i = 0; i < str_numbers.Length; i++ )
+                    potential_numbers.Add(int.Parse(str_numbers[i]));
+            }else if (s1.Contains('-'))
+            {
+                string[] str_limits_numbers = s1.Split('-');
+                int first_number = int.Parse(str_limits_numbers[0]);
+                int last_number = int.Parse(str_limits_numbers[1]);
+                for (int i = first_number; i <= last_number; i++)
+                    potential_numbers.Add(i);
+            }
+        }
+
+        public override int GetResult()
+        {
+            int index = rand.Next(potential_numbers.Count);
+            result = potential_numbers[index];
+            return result;
+        }
+    }
+
+    //Клас для інтерпретації ключа типу number numerators and denominators
+    class fraction_numer_denom_interpr : Interpreter
+    {
+        string result = "";
+        Random rand = new Random();
+        int numerator = 0, denominator = 1;
+        int final_numerator = 1, final_denominator = 1;
+        List<int> potential_numerators = new List<int>();
+        List<int> potential_denominators = new List<int>();
+
+        public fraction_numer_denom_interpr(string s1)
+        {
+            if ((s1.ToLower()).Contains("whole"))
+            {
+                final_denominator = final_numerator = rand.Next(1, 999);
+                return;
+            }
+            string[] words = s1.Split(' ');
+            string[] s_numer_denom = words[2].Split('/');
+            numerator = int.Parse(s_numer_denom[0]);
+            denominator = int.Parse(s_numer_denom[1]);
+            int multiplier = 1;
+
+            for(int i = denominator; i < 1000; i+= denominator)
+            {
+                potential_denominators.Add(i);
+            }
+            int index_denominator = rand.Next(potential_denominators.Count);
+            final_denominator = potential_denominators[index_denominator];
+            multiplier = final_denominator / denominator;
+            final_numerator *= multiplier;
+        }
+
+        public new string GetResult()
+        {
+            result += final_numerator.ToString();
+            result += "/\n";
+            result += final_denominator.ToString();
+
+            return result;
+        }
+    }
+
+    //Клас для інтерпретації ключа типу decimal
+    class fraction_decimal_interpr : Interpreter
+    {
+        int number = 0;
+        string result = "";
+        List<int> potential_numbers = new List<int>();
+        Random rand = new Random();
+        bool isOnes = false;
+        bool isTens = false;
+        bool isHundreds = false;
+
+        private static bool isNumberInOnes(double final_number, int peace_number)
+        {
+            string str_final_number = final_number.ToString();
+
+            if (final_number > 0 && str_final_number[0].ToString() == peace_number.ToString()) return true;
+            else return false;
+        }
+
+        private static bool isNumberInTenths(double final_number, int peace_number)
+        {
+            string str_final_number = final_number.ToString();
+
+            try
+            {
+                str_final_number[2].ToString();
+            }
+            catch
+            {
+                return false;
+            }
+
+            if (final_number > 1 && final_number < 10 && str_final_number[2].ToString() == peace_number.ToString()) return true;
+            else return false;
+        }
+
+        private static bool isNumberInHundredths(double final_number, int peace_number)
+        {
+            string str_final_number = final_number.ToString();
+
+            try
+            {
+                str_final_number[3].ToString();
+            }
+            catch
+            {
+                return false;
+            }
+
+            if (final_number > 1 && final_number < 10 && str_final_number[3].ToString() == peace_number.ToString()) return true;
+            else return false;
+        }
+
+        public fraction_decimal_interpr(string s1)
+        {
+            if(!(s1.Contains("Not") || s1.Contains("not") || s1.Contains("NOT")))
+            {
+                string[] all_words = s1.Split(' ');
+                number = int.Parse(all_words[0]);
+
+                for(int i = 1; i < all_words.Length; i++)
+                {
+                    if (all_words[i] == "ones") isOnes = true;
+                    else if (all_words[i] == "tenths") isTens = true;
+                    else if (all_words[i] == "hundredths") isHundreds = true;
+                }
+
+                if(isOnes)
+                {
+                    for(int i = number; i < 1000; i+=10)
+                        potential_numbers.Add(i);
+                }else if(isTens)
+                {
+                    for (int i = number+10; i < 1000; i++)
+                        potential_numbers.Add(i);
+                }
+
+                for(int i = 1; i < 1000; i++)
+                {
+                    if(isOnes && isNumberInOnes(i, number))
+                        potential_numbers.Add(i);
+                    else if(isTens && isNumberInTenths(i, number))
+                        potential_numbers.Add(i);
+                    else if (isHundreds && isNumberInHundredths(i, number))
+                        potential_numbers.Add(i);
+                }
+            }
+            else
+            {
+                for(int i = 1; i < 1000; i++)
+                {
+                    if(!i.ToString().Contains(number.ToString()))
+                    {
+                        potential_numbers.Add(i);
+                    }
+                }
+            }
+        }
+
+        public new string GetResult()
+        {
+            int index = rand.Next(potential_numbers.Count);
+            string temp = potential_numbers[index].ToString();
+            result += temp[0];
+            result += ".";
+            try
+            {
+                result += temp[1];
+            }
+                catch
+            {
+                result += "0";
+            }
+            try
+            {
+                result += temp[2];
+            }catch
+            {
+                result += "0";
+            }
+            return result;
+        }
+    }
+
+    //Клас для інтерпретації ключа типу percent
+    class fraction_percent_equiv_interpr : Interpreter
+    {
+        struct Fraction
+        {
+            public int numerator;
+            public int denominator;
+        } 
+
+        int number = 0;
+        string result = "";
+        string percent = "";
+        List<string> potential_numbers = new List<string>();
+        Fraction input = new Fraction();
+        Fraction final = new Fraction();
+        Random rand = new Random();
+
+
+        static Fraction ToReduce(Fraction fraction)
+        {
+            int nod = Nod(fraction.numerator, fraction.denominator);
+            if (nod != 0)
+            {
+                fraction.numerator /= nod;
+                fraction.denominator /= nod;
+            }
+            return fraction;
+        }
+        static int Nod(int n, int d)
+        {
+            int temp;
+            n = Math.Abs(n);
+            d = Math.Abs(d);
+            while (d != 0 && n != 0)
+            {
+                if (n % d > 0)
+                {
+                    temp = n;
+                    n = d;
+                    d = temp % d;
+                }
+                else break;
+            }
+            if (d != 0 && n != 0) return d;
+            else return 0;
+        }
+
+        public fraction_percent_equiv_interpr(string s1)
+        {
+            string[] words = s1.Split(' ');
+
+            if (!(s1.ToLower()).Contains("from"))
+            {
+                string temp = words[2];
+
+
+                for (int i = 0; i < temp.Length - 1; i++)
+                    percent += temp[i];
+
+                input.numerator = int.Parse(percent);
+                input.denominator = 100;
+
+                //Скорочення дробу для захоплення всіх можливих варіантів
+                final = ToReduce(input);
+
+                //Добавлення до потенційних чисел десяткові дроби
+                for (int i = 1; i < 100; i++)
+                {
+                    if (i.ToString() == percent)
+                    {
+                        string number = "0.";
+                        number += i.ToString();
+                        break;
+                    }
+                }
+
+                //Добавлення до потенційних чисел звичайні дроби
+                do
+                {
+                    string number = final.numerator.ToString() + "/" + final.denominator.ToString();
+                    potential_numbers.Add(number);
+                    final.numerator *= 2;
+                    final.denominator *= 2;
+                } while (final.denominator < 1000);
+            }
+            else
+            {
+                string temp = words[1];
+                string first_num = "";
+
+                for (int i = 0; i < temp.Length - 1; i++)
+                    first_num += temp[i];
+
+                temp = words[3];
+                string second_num = "";
+
+                for (int i = 0; i < temp.Length - 1; i++)
+                    second_num += temp[i];
+
+                int percent = rand.Next(int.Parse(first_num), int.Parse(second_num));
+
+                input.numerator = percent;
+                input.denominator = 100;
+
+                //Скорочення дробу для захоплення всіх можливих варіантів
+                final = ToReduce(input);
+
+                //Добавлення до потенційних чисел десяткові дроби
+                for (int i = 1; i < 100; i++)
+                {
+                    if (i == percent)
+                    {
+                        string number = "0.";
+                        number += i.ToString();
+                        break;
+                    }
+                }
+
+                //Добавлення до потенційних чисел звичайні дроби
+                do
+                {
+                    string number = final.numerator.ToString() + "/" + final.denominator.ToString();
+                    potential_numbers.Add(number);
+                    final.numerator *= 2;
+                    final.denominator *= 2;
+                } while (final.denominator < 1000);
+            }
+        }
+        public new string GetResult()
+        {
+            int index = rand.Next(potential_numbers.Count);
+            string temp = potential_numbers[index].ToString();
+            return result;
+        }
+    }
+
+    //Клас для інтерпретації ключа типу decimal number sense
+    class fraction_decimal_sense_interpr : Interpreter
+    {
+        static List<string> potential_numbers = new List<string>();
+        static Random rand = new Random();
+        string result = "";
+        int first_number = 0;
+        int last_number = 0;
+
+        private static string Create_string_to_output(string first_num,string second_num)
+        {
+            string final_num = "";
+            string final_first = "";
+            string final_second = "";
+
+            #region Конвертуємо вхідну стрічку з дробовими у стрічку з цілими для знаходження числа з проміжку між числами
+            if (first_num.Contains('.'))
+            {
+                for (int i = 0; i < first_num.Length; i++)
+                {
+                    if (first_num[i] != '.')
+                        final_first += first_num[i];
+                }
+            }
+            else
+            {
+                final_first = first_num;
+            }
+
+            if (second_num.Contains('.'))
+            {
+                for (int i = 0; i < second_num.Length; i++)
+                {
+                    if (second_num[i] != '.')
+                        final_second += second_num[i];
+                }
+            }
+            else
+            {
+                final_second = second_num;
+            }
+            #endregion
+
+            #region Зрівнюємо два числа по довжині
+            if (final_first.Length > final_second.Length)
+            {
+                do
+                {
+                    final_second += "0";
+                } while (final_first.Length != final_second.Length);
+            }
+            else if (final_second.Length > final_first.Length)
+            {
+                do
+                {
+                    final_first += "0";
+                } while (final_first.Length != final_second.Length);
+            }
+
+            for (int i = int.Parse(final_first); i <= int.Parse(final_second); i++ )
+            {
+                potential_numbers.Add(i.ToString());
+            }
+            #endregion
+
+            //Випадково вибираємо число
+            int index = rand.Next(potential_numbers.Count);
+            string temp = potential_numbers[index];
+            final_num += temp[0];
+            final_num += ".";
+            for (int i = 2; i < temp.Length;i++)
+                final_num += temp[i];
+
+            return final_num;
+        }
+
+        public fraction_decimal_sense_interpr(string s1)
+        {
+            string[] words = s1.Split(' ');
+            string s_first_num = words[1];
+            string s_second_num = words[3];
+
+            result = Create_string_to_output(s_first_num, s_second_num);
+            
+        }
+
+        public new string GetResult()
         {
             return result;
         }

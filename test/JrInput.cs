@@ -109,7 +109,8 @@ namespace test
                 {
                     valid_data_funk.data_in_once_place(str);
                 }
-                catch                {
+                catch
+                {
                     textBox_error.Text = "Numbers are not valid!" + Environment.NewLine + "Please, enter valid data like in example!";
                     return false;
                 }

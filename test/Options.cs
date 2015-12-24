@@ -41,5 +41,16 @@ namespace test
             textBox1.Text = workspace_ob.field_ex.width.ToString();
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.Text = ""; 
+            try { 
+                int i = int.Parse(textBox1.Text);
+                if (int.Parse(textBox1.Text) > 20) { textBox2.Text = "If value width of square greater than 20, it`s not comfortable to colored picture! Enter valid value."; }
+            }
+            catch { textBox2.Text = "Enter a number."; }
+            
+        }
+
     }
 }

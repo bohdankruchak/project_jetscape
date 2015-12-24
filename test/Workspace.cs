@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 using System.Threading.Tasks;
 
 
@@ -35,8 +36,9 @@ namespace test
                 }
             }
         }
-        public enum g_mod { 
-            ADDJR, ADDBAS, ADDADV, SUBJR, SUBBAS, SUBADV, MULTJR, MULTBAS, MULTADV, DIVJR, DIVBAS, DIVADV, MIXED, PLCVALCOUN, PLCVALPLCV, ROUNDING, ADVREGRADD, ADVREGRSUB, ADVREGRMULT, ADVNUMBANDOP, GEOMANDMES, CLRBYNUM, CLRBYNUMPAIR, CLRBYNUMRANGES, FDPFRNUM, FDPFRDET, FDPDECOL, FDPPECOL };
+        public enum g_mod {
+            ADDJR, ADDBAS, ADDADV, SUBJR, SUBBAS, SUBADV, MULTJR, MULTBAS, MULTADV, DIVJR, DIVBAS, DIVADV, MIXED, PLCVALCOUN, PLCVALPLCV, ROUNDING, ADVREGRADD, ADVREGRSUB, ADVREGRMULT, ADVNUMBANDOPODDEVEN, ADVNUMBANDOPNUMPATT, ADVNUMBANDOPFACTORS, GEOMANDMESIANGL, GEOMANDMGRPHQA, GEOMANDMESISHAP, CLRBYNUM, CLRBYNUMPAIR, CLRBYNUMRANGES, FDPFRNUM, FDPFRDEN, FDPDECOLPLVAL, FDPDECOLNUMSEN, FDPPECOLEQU, FDPPECOLNUMSEN
+        };
         public g_mod game_mod = g_mod.ADDJR;
         public string example_for_input = "3 or 6";
         public class key
@@ -55,16 +57,22 @@ namespace test
         public field field_ex = new field();
         public List<key> keys;
         public char sign = '+';
+        public ToolStripMenuItem checked_item_in_tmpl_menu;
+        public List<string> vadil_data;
         public Workspace(int height = 20, int width = 20)
         {
             keys = new List<key>();
-            keys.Add(new Workspace.key("0,11", Color.Tan));
-            keys.Add(new Workspace.key("1,2,3", Color.Brown));
-            keys.Add(new Workspace.key("4,5,6", Color.Orange));
-            keys.Add(new Workspace.key("7,8,9", Color.Green));
-            keys.Add(new Workspace.key("10,23", Color.Blue));
+            keys.Add(new Workspace.key("0 or 11", Color.Tan));
+            keys.Add(new Workspace.key("1 or 3", Color.Brown));
+            keys.Add(new Workspace.key("4 or 6", Color.Orange));
+            keys.Add(new Workspace.key("7 or 9", Color.Green));
+            keys.Add(new Workspace.key("10 or 3", Color.Blue));
+
+            
         }
-        Rectangle[] slot_for_color = new Rectangle[10];
+
+        
+
     }
     
 }
