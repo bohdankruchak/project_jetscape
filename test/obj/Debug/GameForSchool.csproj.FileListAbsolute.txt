@@ -9,3 +9,7 @@ C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\GameForSchool.cspro
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.exe
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.pdb
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.NewKey.resources
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.InputJrKey.resources
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.InputBasicKey.resources
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.InputAdvKey.resources
+C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.TabOptions.resources

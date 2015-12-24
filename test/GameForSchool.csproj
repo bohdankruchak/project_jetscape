@@ -50,17 +50,30 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MathTemplate.cs" />
-    <Compile Include="JrInput.cs">
+    <Compile Include="GenerateInputString.cs" />
+    <Compile Include="InputBasicKey.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JrInput.Designer.cs">
-      <DependentUpon>JrInput.cs</DependentUpon>
+    <Compile Include="InputBasicKey.designer.cs">
+      <DependentUpon>InputBasicKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputAdvKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputAdvKey.designer.cs">
+      <DependentUpon>InputAdvKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MathTemplate.cs" />
+    <Compile Include="InputJrKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputJrKey.designer.cs">
+      <DependentUpon>InputJrKey.cs</DependentUpon>
     </Compile>
     <Compile Include="NewKey.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewKey.Designer.cs">
+    <Compile Include="NewKey.designer.cs">
       <DependentUpon>NewKey.cs</DependentUpon>
     </Compile>
     <Compile Include="Options.cs">
@@ -71,12 +84,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabOptions.Designer.cs">
+      <DependentUpon>TabOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Workspace.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JrInput.resx">
-      <DependentUpon>JrInput.cs</DependentUpon>
+    <EmbeddedResource Include="InputBasicKey.resx">
+      <DependentUpon>InputBasicKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputAdvKey.resx">
+      <DependentUpon>InputAdvKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputJrKey.resx">
+      <DependentUpon>InputJrKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewKey.resx">
       <DependentUpon>NewKey.cs</DependentUpon>
@@ -93,6 +118,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TabOptions.resx">
+      <DependentUpon>TabOptions.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

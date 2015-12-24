@@ -33,58 +33,10 @@
             this.openPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generatePDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cleanColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cleanAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.templatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mathFactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.additionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jrAdditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.basicAdditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advancedAdditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subtractionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jrSubtractionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.basicSubtractionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advancedSubtractionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.multiplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jrMultiplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.basicMultiplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advancedMultiplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jrDivisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jrDivisionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.basicDivisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advancedDivisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mixedStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.placeValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.counting1999ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.placeValueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.roundingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advancedMathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.regroupingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.additionRegroupingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subtractionRegroupingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.multiplicationRegroupingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.numbersAndOperationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oddAndEvenNumbersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.numberPatternsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.factorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.geometryAndMeasurementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.identifyAnglesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.graphingQuadrantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.identifyShapesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorByNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorByNumberToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.numberPairsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.numberRangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fractionsDecimalsAndPercentagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fractionNumeratorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fractionDenominatorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decimalColoringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decimalPlaceValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.percentColoringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.equivalentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.numberSenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +44,6 @@
             this.btn_addKey = new System.Windows.Forms.Button();
             this.btn_deleteKey = new System.Windows.Forms.Button();
             this.textBox_info = new System.Windows.Forms.TextBox();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -101,8 +52,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.templatesToolStripMenuItem});
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(853, 24);
@@ -123,21 +73,28 @@
             // openPDFToolStripMenuItem
             // 
             this.openPDFToolStripMenuItem.Name = "openPDFToolStripMenuItem";
-            this.openPDFToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.openPDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openPDFToolStripMenuItem.Text = "Open PDF";
             // 
             // generatePDFToolStripMenuItem
             // 
             this.generatePDFToolStripMenuItem.Name = "generatePDFToolStripMenuItem";
-            this.generatePDFToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.generatePDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.generatePDFToolStripMenuItem.Text = "Generate PDF";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -161,423 +118,6 @@
             this.cleanAllToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.cleanAllToolStripMenuItem.Text = "Clean all";
             this.cleanAllToolStripMenuItem.Click += new System.EventHandler(this.cleanAllToolStripMenuItem_Click);
-            // 
-            // templatesToolStripMenuItem
-            // 
-            this.templatesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mathFactToolStripMenuItem,
-            this.placeValueToolStripMenuItem,
-            this.advancedMathToolStripMenuItem,
-            this.colorByNumberToolStripMenuItem,
-            this.fractionsDecimalsAndPercentagesToolStripMenuItem});
-            this.templatesToolStripMenuItem.Name = "templatesToolStripMenuItem";
-            this.templatesToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.templatesToolStripMenuItem.Text = "Templates";
-            // 
-            // mathFactToolStripMenuItem
-            // 
-            this.mathFactToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.additionToolStripMenuItem,
-            this.subtractionToolStripMenuItem,
-            this.multiplicationToolStripMenuItem,
-            this.jrDivisionToolStripMenuItem,
-            this.mixedStyleToolStripMenuItem});
-            this.mathFactToolStripMenuItem.Name = "mathFactToolStripMenuItem";
-            this.mathFactToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.mathFactToolStripMenuItem.Text = "Math Fact";
-            // 
-            // additionToolStripMenuItem
-            // 
-            this.additionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jrAdditionToolStripMenuItem,
-            this.basicAdditionToolStripMenuItem,
-            this.advancedAdditionToolStripMenuItem});
-            this.additionToolStripMenuItem.Name = "additionToolStripMenuItem";
-            this.additionToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.additionToolStripMenuItem.Text = "Addition";
-            // 
-            // jrAdditionToolStripMenuItem
-            // 
-            this.jrAdditionToolStripMenuItem.CheckOnClick = true;
-            this.jrAdditionToolStripMenuItem.Name = "jrAdditionToolStripMenuItem";
-            this.jrAdditionToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.jrAdditionToolStripMenuItem.Text = "Jr. Addition";
-            this.jrAdditionToolStripMenuItem.Click += new System.EventHandler(this.jrAdditionToolStripMenuItem_Click);
-            // 
-            // basicAdditionToolStripMenuItem
-            // 
-            this.basicAdditionToolStripMenuItem.CheckOnClick = true;
-            this.basicAdditionToolStripMenuItem.Name = "basicAdditionToolStripMenuItem";
-            this.basicAdditionToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.basicAdditionToolStripMenuItem.Text = "Basic Addition";
-            this.basicAdditionToolStripMenuItem.Click += new System.EventHandler(this.basicAdditionToolStripMenuItem_Click);
-            // 
-            // advancedAdditionToolStripMenuItem
-            // 
-            this.advancedAdditionToolStripMenuItem.CheckOnClick = true;
-            this.advancedAdditionToolStripMenuItem.Name = "advancedAdditionToolStripMenuItem";
-            this.advancedAdditionToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.advancedAdditionToolStripMenuItem.Text = "Advanced Addition";
-            this.advancedAdditionToolStripMenuItem.Click += new System.EventHandler(this.advancedAdditionToolStripMenuItem_Click);
-            // 
-            // subtractionToolStripMenuItem
-            // 
-            this.subtractionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jrSubtractionToolStripMenuItem,
-            this.basicSubtractionToolStripMenuItem,
-            this.advancedSubtractionToolStripMenuItem});
-            this.subtractionToolStripMenuItem.Name = "subtractionToolStripMenuItem";
-            this.subtractionToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.subtractionToolStripMenuItem.Text = "Subtraction";
-            // 
-            // jrSubtractionToolStripMenuItem
-            // 
-            this.jrSubtractionToolStripMenuItem.CheckOnClick = true;
-            this.jrSubtractionToolStripMenuItem.Name = "jrSubtractionToolStripMenuItem";
-            this.jrSubtractionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.jrSubtractionToolStripMenuItem.Text = "Jr. Subtraction";
-            this.jrSubtractionToolStripMenuItem.Click += new System.EventHandler(this.jrSubtractionToolStripMenuItem_Click);
-            // 
-            // basicSubtractionToolStripMenuItem
-            // 
-            this.basicSubtractionToolStripMenuItem.CheckOnClick = true;
-            this.basicSubtractionToolStripMenuItem.Name = "basicSubtractionToolStripMenuItem";
-            this.basicSubtractionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.basicSubtractionToolStripMenuItem.Text = "Basic Subtraction";
-            this.basicSubtractionToolStripMenuItem.Click += new System.EventHandler(this.basicSubtractionToolStripMenuItem_Click);
-            // 
-            // advancedSubtractionToolStripMenuItem
-            // 
-            this.advancedSubtractionToolStripMenuItem.CheckOnClick = true;
-            this.advancedSubtractionToolStripMenuItem.Name = "advancedSubtractionToolStripMenuItem";
-            this.advancedSubtractionToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.advancedSubtractionToolStripMenuItem.Text = "Advanced Subtraction";
-            this.advancedSubtractionToolStripMenuItem.Click += new System.EventHandler(this.advancedSubtractionToolStripMenuItem_Click);
-            // 
-            // multiplicationToolStripMenuItem
-            // 
-            this.multiplicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jrMultiplicationToolStripMenuItem,
-            this.basicMultiplicationToolStripMenuItem,
-            this.advancedMultiplicationToolStripMenuItem});
-            this.multiplicationToolStripMenuItem.Name = "multiplicationToolStripMenuItem";
-            this.multiplicationToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.multiplicationToolStripMenuItem.Text = "Multiplication";
-            // 
-            // jrMultiplicationToolStripMenuItem
-            // 
-            this.jrMultiplicationToolStripMenuItem.CheckOnClick = true;
-            this.jrMultiplicationToolStripMenuItem.Name = "jrMultiplicationToolStripMenuItem";
-            this.jrMultiplicationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.jrMultiplicationToolStripMenuItem.Text = "Jr. Multiplication";
-            this.jrMultiplicationToolStripMenuItem.Click += new System.EventHandler(this.jrMultiplicationToolStripMenuItem_Click);
-            // 
-            // basicMultiplicationToolStripMenuItem
-            // 
-            this.basicMultiplicationToolStripMenuItem.CheckOnClick = true;
-            this.basicMultiplicationToolStripMenuItem.Name = "basicMultiplicationToolStripMenuItem";
-            this.basicMultiplicationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.basicMultiplicationToolStripMenuItem.Text = "Basic Multiplication";
-            this.basicMultiplicationToolStripMenuItem.Click += new System.EventHandler(this.basicMultiplicationToolStripMenuItem_Click);
-            // 
-            // advancedMultiplicationToolStripMenuItem
-            // 
-            this.advancedMultiplicationToolStripMenuItem.CheckOnClick = true;
-            this.advancedMultiplicationToolStripMenuItem.Name = "advancedMultiplicationToolStripMenuItem";
-            this.advancedMultiplicationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.advancedMultiplicationToolStripMenuItem.Text = "Advanced Multiplication";
-            this.advancedMultiplicationToolStripMenuItem.Click += new System.EventHandler(this.advancedMultiplicationToolStripMenuItem_Click);
-            // 
-            // jrDivisionToolStripMenuItem
-            // 
-            this.jrDivisionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jrDivisionToolStripMenuItem1,
-            this.basicDivisionToolStripMenuItem,
-            this.advancedDivisionToolStripMenuItem});
-            this.jrDivisionToolStripMenuItem.Name = "jrDivisionToolStripMenuItem";
-            this.jrDivisionToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.jrDivisionToolStripMenuItem.Text = "Division";
-            // 
-            // jrDivisionToolStripMenuItem1
-            // 
-            this.jrDivisionToolStripMenuItem1.CheckOnClick = true;
-            this.jrDivisionToolStripMenuItem1.Name = "jrDivisionToolStripMenuItem1";
-            this.jrDivisionToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
-            this.jrDivisionToolStripMenuItem1.Text = "Jr. Division";
-            this.jrDivisionToolStripMenuItem1.Click += new System.EventHandler(this.jrDivisionToolStripMenuItem1_Click);
-            // 
-            // basicDivisionToolStripMenuItem
-            // 
-            this.basicDivisionToolStripMenuItem.CheckOnClick = true;
-            this.basicDivisionToolStripMenuItem.Name = "basicDivisionToolStripMenuItem";
-            this.basicDivisionToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.basicDivisionToolStripMenuItem.Text = "Basic Division";
-            this.basicDivisionToolStripMenuItem.Click += new System.EventHandler(this.basicDivisionToolStripMenuItem_Click);
-            // 
-            // advancedDivisionToolStripMenuItem
-            // 
-            this.advancedDivisionToolStripMenuItem.CheckOnClick = true;
-            this.advancedDivisionToolStripMenuItem.Name = "advancedDivisionToolStripMenuItem";
-            this.advancedDivisionToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.advancedDivisionToolStripMenuItem.Text = "Advanced Division";
-            this.advancedDivisionToolStripMenuItem.Click += new System.EventHandler(this.advancedDivisionToolStripMenuItem_Click);
-            // 
-            // mixedStyleToolStripMenuItem
-            // 
-            this.mixedStyleToolStripMenuItem.CheckOnClick = true;
-            this.mixedStyleToolStripMenuItem.Name = "mixedStyleToolStripMenuItem";
-            this.mixedStyleToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.mixedStyleToolStripMenuItem.Text = "Mixed Style";
-            this.mixedStyleToolStripMenuItem.Click += new System.EventHandler(this.mixedStyleToolStripMenuItem_Click);
-            // 
-            // placeValueToolStripMenuItem
-            // 
-            this.placeValueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.counting1999ToolStripMenuItem,
-            this.placeValueToolStripMenuItem1,
-            this.roundingToolStripMenuItem});
-            this.placeValueToolStripMenuItem.Name = "placeValueToolStripMenuItem";
-            this.placeValueToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.placeValueToolStripMenuItem.Text = "Place Value";
-            // 
-            // counting1999ToolStripMenuItem
-            // 
-            this.counting1999ToolStripMenuItem.CheckOnClick = true;
-            this.counting1999ToolStripMenuItem.Name = "counting1999ToolStripMenuItem";
-            this.counting1999ToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.counting1999ToolStripMenuItem.Text = "Counting 1-999";
-            this.counting1999ToolStripMenuItem.Click += new System.EventHandler(this.counting1999ToolStripMenuItem_Click);
-            // 
-            // placeValueToolStripMenuItem1
-            // 
-            this.placeValueToolStripMenuItem1.CheckOnClick = true;
-            this.placeValueToolStripMenuItem1.Name = "placeValueToolStripMenuItem1";
-            this.placeValueToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
-            this.placeValueToolStripMenuItem1.Text = "Place Value";
-            this.placeValueToolStripMenuItem1.Click += new System.EventHandler(this.placeValueToolStripMenuItem1_Click);
-            // 
-            // roundingToolStripMenuItem
-            // 
-            this.roundingToolStripMenuItem.CheckOnClick = true;
-            this.roundingToolStripMenuItem.Name = "roundingToolStripMenuItem";
-            this.roundingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.roundingToolStripMenuItem.Text = "Rounding";
-            this.roundingToolStripMenuItem.Click += new System.EventHandler(this.roundingToolStripMenuItem_Click);
-            // 
-            // advancedMathToolStripMenuItem
-            // 
-            this.advancedMathToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.regroupingToolStripMenuItem,
-            this.numbersAndOperationsToolStripMenuItem,
-            this.geometryAndMeasurementToolStripMenuItem});
-            this.advancedMathToolStripMenuItem.Name = "advancedMathToolStripMenuItem";
-            this.advancedMathToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.advancedMathToolStripMenuItem.Text = "Advanced Math";
-            // 
-            // regroupingToolStripMenuItem
-            // 
-            this.regroupingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.additionRegroupingToolStripMenuItem,
-            this.subtractionRegroupingToolStripMenuItem,
-            this.multiplicationRegroupingToolStripMenuItem});
-            this.regroupingToolStripMenuItem.Name = "regroupingToolStripMenuItem";
-            this.regroupingToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.regroupingToolStripMenuItem.Text = "Regrouping";
-            // 
-            // additionRegroupingToolStripMenuItem
-            // 
-            this.additionRegroupingToolStripMenuItem.CheckOnClick = true;
-            this.additionRegroupingToolStripMenuItem.Name = "additionRegroupingToolStripMenuItem";
-            this.additionRegroupingToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.additionRegroupingToolStripMenuItem.Text = "Addition Regrouping";
-            this.additionRegroupingToolStripMenuItem.Click += new System.EventHandler(this.additionRegroupingToolStripMenuItem_Click);
-            // 
-            // subtractionRegroupingToolStripMenuItem
-            // 
-            this.subtractionRegroupingToolStripMenuItem.CheckOnClick = true;
-            this.subtractionRegroupingToolStripMenuItem.Name = "subtractionRegroupingToolStripMenuItem";
-            this.subtractionRegroupingToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.subtractionRegroupingToolStripMenuItem.Text = "Subtraction Regrouping";
-            this.subtractionRegroupingToolStripMenuItem.Click += new System.EventHandler(this.subtractionRegroupingToolStripMenuItem_Click);
-            // 
-            // multiplicationRegroupingToolStripMenuItem
-            // 
-            this.multiplicationRegroupingToolStripMenuItem.CheckOnClick = true;
-            this.multiplicationRegroupingToolStripMenuItem.Name = "multiplicationRegroupingToolStripMenuItem";
-            this.multiplicationRegroupingToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.multiplicationRegroupingToolStripMenuItem.Text = "Multiplication Regrouping";
-            this.multiplicationRegroupingToolStripMenuItem.Click += new System.EventHandler(this.multiplicationRegroupingToolStripMenuItem_Click);
-            // 
-            // numbersAndOperationsToolStripMenuItem
-            // 
-            this.numbersAndOperationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oddAndEvenNumbersToolStripMenuItem,
-            this.numberPatternsToolStripMenuItem,
-            this.factorsToolStripMenuItem});
-            this.numbersAndOperationsToolStripMenuItem.Name = "numbersAndOperationsToolStripMenuItem";
-            this.numbersAndOperationsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.numbersAndOperationsToolStripMenuItem.Text = "Numbers and Operations";
-            // 
-            // oddAndEvenNumbersToolStripMenuItem
-            // 
-            this.oddAndEvenNumbersToolStripMenuItem.Name = "oddAndEvenNumbersToolStripMenuItem";
-            this.oddAndEvenNumbersToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.oddAndEvenNumbersToolStripMenuItem.Text = "Odd and Even numbers";
-            this.oddAndEvenNumbersToolStripMenuItem.Click += new System.EventHandler(this.oddAndEvenNumbersToolStripMenuItem_Click);
-            // 
-            // numberPatternsToolStripMenuItem
-            // 
-            this.numberPatternsToolStripMenuItem.Name = "numberPatternsToolStripMenuItem";
-            this.numberPatternsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.numberPatternsToolStripMenuItem.Text = "Number Patterns";
-            this.numberPatternsToolStripMenuItem.Click += new System.EventHandler(this.numberPatternsToolStripMenuItem_Click);
-            // 
-            // factorsToolStripMenuItem
-            // 
-            this.factorsToolStripMenuItem.Name = "factorsToolStripMenuItem";
-            this.factorsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.factorsToolStripMenuItem.Text = "Factors";
-            this.factorsToolStripMenuItem.Click += new System.EventHandler(this.factorsToolStripMenuItem_Click);
-            // 
-            // geometryAndMeasurementToolStripMenuItem
-            // 
-            this.geometryAndMeasurementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.identifyAnglesToolStripMenuItem,
-            this.graphingQuadrantsToolStripMenuItem,
-            this.identifyShapesToolStripMenuItem});
-            this.geometryAndMeasurementToolStripMenuItem.Name = "geometryAndMeasurementToolStripMenuItem";
-            this.geometryAndMeasurementToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.geometryAndMeasurementToolStripMenuItem.Text = "Geometry and Measurement";
-            // 
-            // identifyAnglesToolStripMenuItem
-            // 
-            this.identifyAnglesToolStripMenuItem.Name = "identifyAnglesToolStripMenuItem";
-            this.identifyAnglesToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.identifyAnglesToolStripMenuItem.Text = "Identify Angles";
-            this.identifyAnglesToolStripMenuItem.Click += new System.EventHandler(this.identifyAnglesToolStripMenuItem_Click);
-            // 
-            // graphingQuadrantsToolStripMenuItem
-            // 
-            this.graphingQuadrantsToolStripMenuItem.Name = "graphingQuadrantsToolStripMenuItem";
-            this.graphingQuadrantsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.graphingQuadrantsToolStripMenuItem.Text = "Graphing Quadrants";
-            this.graphingQuadrantsToolStripMenuItem.Click += new System.EventHandler(this.graphingQuadrantsToolStripMenuItem_Click);
-            // 
-            // identifyShapesToolStripMenuItem
-            // 
-            this.identifyShapesToolStripMenuItem.Name = "identifyShapesToolStripMenuItem";
-            this.identifyShapesToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.identifyShapesToolStripMenuItem.Text = "Identify Shapes";
-            this.identifyShapesToolStripMenuItem.Click += new System.EventHandler(this.identifyShapesToolStripMenuItem_Click);
-            // 
-            // colorByNumberToolStripMenuItem
-            // 
-            this.colorByNumberToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorByNumberToolStripMenuItem1,
-            this.numberPairsToolStripMenuItem,
-            this.numberRangesToolStripMenuItem});
-            this.colorByNumberToolStripMenuItem.Name = "colorByNumberToolStripMenuItem";
-            this.colorByNumberToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.colorByNumberToolStripMenuItem.Text = "Color by Number";
-            // 
-            // colorByNumberToolStripMenuItem1
-            // 
-            this.colorByNumberToolStripMenuItem1.CheckOnClick = true;
-            this.colorByNumberToolStripMenuItem1.Name = "colorByNumberToolStripMenuItem1";
-            this.colorByNumberToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
-            this.colorByNumberToolStripMenuItem1.Text = "Color by Number";
-            this.colorByNumberToolStripMenuItem1.Click += new System.EventHandler(this.colorByNumberToolStripMenuItem1_Click);
-            // 
-            // numberPairsToolStripMenuItem
-            // 
-            this.numberPairsToolStripMenuItem.CheckOnClick = true;
-            this.numberPairsToolStripMenuItem.Name = "numberPairsToolStripMenuItem";
-            this.numberPairsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.numberPairsToolStripMenuItem.Text = "Number Pairs";
-            this.numberPairsToolStripMenuItem.Click += new System.EventHandler(this.numberPairsToolStripMenuItem_Click);
-            // 
-            // numberRangesToolStripMenuItem
-            // 
-            this.numberRangesToolStripMenuItem.CheckOnClick = true;
-            this.numberRangesToolStripMenuItem.Name = "numberRangesToolStripMenuItem";
-            this.numberRangesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.numberRangesToolStripMenuItem.Text = "Number Ranges";
-            this.numberRangesToolStripMenuItem.Click += new System.EventHandler(this.numberRangesToolStripMenuItem_Click);
-            // 
-            // fractionsDecimalsAndPercentagesToolStripMenuItem
-            // 
-            this.fractionsDecimalsAndPercentagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fractionNumeratorsToolStripMenuItem,
-            this.fractionDenominatorsToolStripMenuItem,
-            this.decimalColoringToolStripMenuItem,
-            this.percentColoringToolStripMenuItem});
-            this.fractionsDecimalsAndPercentagesToolStripMenuItem.Name = "fractionsDecimalsAndPercentagesToolStripMenuItem";
-            this.fractionsDecimalsAndPercentagesToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.fractionsDecimalsAndPercentagesToolStripMenuItem.Text = "Fractions, Decimals, and Percentages";
-            // 
-            // fractionNumeratorsToolStripMenuItem
-            // 
-            this.fractionNumeratorsToolStripMenuItem.CheckOnClick = true;
-            this.fractionNumeratorsToolStripMenuItem.Name = "fractionNumeratorsToolStripMenuItem";
-            this.fractionNumeratorsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.fractionNumeratorsToolStripMenuItem.Text = "Fraction Numerators";
-            this.fractionNumeratorsToolStripMenuItem.Click += new System.EventHandler(this.fractionNumeratorsToolStripMenuItem_Click);
-            // 
-            // fractionDenominatorsToolStripMenuItem
-            // 
-            this.fractionDenominatorsToolStripMenuItem.CheckOnClick = true;
-            this.fractionDenominatorsToolStripMenuItem.Name = "fractionDenominatorsToolStripMenuItem";
-            this.fractionDenominatorsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.fractionDenominatorsToolStripMenuItem.Text = "Fraction Denominators";
-            this.fractionDenominatorsToolStripMenuItem.Click += new System.EventHandler(this.fractionDenominatorsToolStripMenuItem_Click);
-            // 
-            // decimalColoringToolStripMenuItem
-            // 
-            this.decimalColoringToolStripMenuItem.CheckOnClick = true;
-            this.decimalColoringToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.decimalPlaceValueToolStripMenuItem,
-            this.dToolStripMenuItem});
-            this.decimalColoringToolStripMenuItem.Name = "decimalColoringToolStripMenuItem";
-            this.decimalColoringToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.decimalColoringToolStripMenuItem.Text = "Decimal Coloring";
-            // 
-            // decimalPlaceValueToolStripMenuItem
-            // 
-            this.decimalPlaceValueToolStripMenuItem.Name = "decimalPlaceValueToolStripMenuItem";
-            this.decimalPlaceValueToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.decimalPlaceValueToolStripMenuItem.Text = "Place Value";
-            this.decimalPlaceValueToolStripMenuItem.Click += new System.EventHandler(this.decimalPlaceValueToolStripMenuItem_Click);
-            // 
-            // dToolStripMenuItem
-            // 
-            this.dToolStripMenuItem.Name = "dToolStripMenuItem";
-            this.dToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.dToolStripMenuItem.Text = "Number sense";
-            this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_Click);
-            // 
-            // percentColoringToolStripMenuItem
-            // 
-            this.percentColoringToolStripMenuItem.CheckOnClick = true;
-            this.percentColoringToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.equivalentsToolStripMenuItem,
-            this.numberSenseToolStripMenuItem});
-            this.percentColoringToolStripMenuItem.Name = "percentColoringToolStripMenuItem";
-            this.percentColoringToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.percentColoringToolStripMenuItem.Text = "Percent Coloring";
-            // 
-            // equivalentsToolStripMenuItem
-            // 
-            this.equivalentsToolStripMenuItem.Name = "equivalentsToolStripMenuItem";
-            this.equivalentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.equivalentsToolStripMenuItem.Text = "Equivalents";
-            this.equivalentsToolStripMenuItem.Click += new System.EventHandler(this.equivalentsToolStripMenuItem_Click);
-            // 
-            // numberSenseToolStripMenuItem
-            // 
-            this.numberSenseToolStripMenuItem.Name = "numberSenseToolStripMenuItem";
-            this.numberSenseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.numberSenseToolStripMenuItem.Text = "Number sense";
-            this.numberSenseToolStripMenuItem.Click += new System.EventHandler(this.numberSenseToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -652,13 +192,6 @@
             this.textBox_info.Size = new System.Drawing.Size(203, 73);
             this.textBox_info.TabIndex = 7;
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,56 +235,7 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.Button btn_addKey;
         private System.Windows.Forms.Button btn_deleteKey;
-        private System.Windows.Forms.ToolStripMenuItem templatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mathFactToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem additionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jrAdditionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem basicAdditionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem advancedAdditionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem subtractionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jrSubtractionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem basicSubtractionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem advancedSubtractionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem multiplicationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jrMultiplicationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem basicMultiplicationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem advancedMultiplicationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jrDivisionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jrDivisionToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem basicDivisionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem advancedDivisionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mixedStyleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem placeValueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem counting1999ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem placeValueToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem roundingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem advancedMathToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem regroupingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem additionRegroupingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem subtractionRegroupingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem multiplicationRegroupingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem numbersAndOperationsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem geometryAndMeasurementToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem colorByNumberToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fractionsDecimalsAndPercentagesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem colorByNumberToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem numberPairsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem numberRangesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fractionNumeratorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fractionDenominatorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem decimalColoringToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem percentColoringToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cleanAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem identifyAnglesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem graphingQuadrantsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem identifyShapesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem oddAndEvenNumbersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem numberPatternsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem factorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem decimalPlaceValueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem equivalentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem numberSenseToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox_info;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }

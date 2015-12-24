@@ -1,6 +1,6 @@
 ﻿namespace test
 {
-    partial class NewKey
+    partial class InputJrKey
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_color = new System.Windows.Forms.TextBox();
             this.textBox_error = new System.Windows.Forms.TextBox();
+            this.textBox_numbers1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -62,7 +64,7 @@
             // 
             this.textBox_numbers.Location = new System.Drawing.Point(12, 25);
             this.textBox_numbers.Name = "textBox_numbers";
-            this.textBox_numbers.Size = new System.Drawing.Size(112, 20);
+            this.textBox_numbers.Size = new System.Drawing.Size(34, 20);
             this.textBox_numbers.TabIndex = 2;
             this.textBox_numbers.TextChanged += new System.EventHandler(this.textBox_numbers_TextChanged_1);
             // 
@@ -106,14 +108,32 @@
             this.textBox_error.Multiline = true;
             this.textBox_error.Name = "textBox_error";
             this.textBox_error.ReadOnly = true;
-            this.textBox_error.Size = new System.Drawing.Size(254, 34);
+            this.textBox_error.Size = new System.Drawing.Size(254, 41);
             this.textBox_error.TabIndex = 8;
             // 
-            // NewKey
+            // textBox_numbers1
+            // 
+            this.textBox_numbers1.Location = new System.Drawing.Point(65, 25);
+            this.textBox_numbers1.Name = "textBox_numbers1";
+            this.textBox_numbers1.Size = new System.Drawing.Size(34, 20);
+            this.textBox_numbers1.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(48, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(16, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "or";
+            // 
+            // InputJrKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 120);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox_numbers1);
             this.Controls.Add(this.textBox_error);
             this.Controls.Add(this.textBox_color);
             this.Controls.Add(this.label3);
@@ -122,8 +142,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "NewKey";
+            this.Name = "InputJrKey";
             this.Text = "New key";
+            this.Shown += new System.EventHandler(this.InputJrKey_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +160,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_color;
         private System.Windows.Forms.TextBox textBox_error;
+        private System.Windows.Forms.TextBox textBox_numbers1;
+        private System.Windows.Forms.Label label2;
     }
 }

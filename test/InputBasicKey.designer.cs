@@ -1,6 +1,6 @@
 ﻿namespace test
 {
-    partial class NewKey
+    partial class InputBasicKey
     {
         /// <summary>
         /// Required designer variable.
@@ -62,7 +62,7 @@
             // 
             this.textBox_numbers.Location = new System.Drawing.Point(12, 25);
             this.textBox_numbers.Name = "textBox_numbers";
-            this.textBox_numbers.Size = new System.Drawing.Size(100, 20);
+            this.textBox_numbers.Size = new System.Drawing.Size(125, 20);
             this.textBox_numbers.TabIndex = 2;
             this.textBox_numbers.TextChanged += new System.EventHandler(this.textBox_numbers_TextChanged_1);
             // 
@@ -106,10 +106,10 @@
             this.textBox_error.Multiline = true;
             this.textBox_error.Name = "textBox_error";
             this.textBox_error.ReadOnly = true;
-            this.textBox_error.Size = new System.Drawing.Size(254, 28);
+            this.textBox_error.Size = new System.Drawing.Size(254, 34);
             this.textBox_error.TabIndex = 8;
             // 
-            // NewKey
+            // InputBasicKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,8 +122,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "NewKey";
+            this.Name = "InputBasicKey";
             this.Text = "New key";
+            this.Shown += new System.EventHandler(this.InputBasicKey_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

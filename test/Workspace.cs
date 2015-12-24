@@ -11,6 +11,28 @@ namespace test
 {
     public class Workspace
     {
+        public class options
+        {
+            public enum g_mod
+            {
+                BASIC_EVEN_ODD, BASIC_PRIM_COMP, BASIC_EVEN_MYST, ALGEBRA_SIMP, ALGEBRA_MIDD, ALGEBRA_HARD_FRAC, ALGEBRA_HARD_DEC, ALGEBRA_HARD_PERC, 
+            };
+            public enum arithmetic_op
+            {
+                ADDITION, SUBSTRACTION, MULTIPLICATION, DIVISION, NONE
+            };
+            public enum complexity
+            {
+                JUNIOR, BASIC, ADVANCED, NONE
+            };
+
+            public g_mod game_mod = g_mod.BASIC_EVEN_ODD;
+            public arithmetic_op active_arithmetic_op= arithmetic_op.NONE;
+            public complexity active_complexity = complexity.NONE;
+            int active_range_first;
+            int active_range_second;
+        }
+        public string active_mode_name = "";
         public class field
         {
             public int heigth;
@@ -36,10 +58,8 @@ namespace test
                 }
             }
         }
-        public enum g_mod {
-            ADDJR, ADDBAS, ADDADV, SUBJR, SUBBAS, SUBADV, MULTJR, MULTBAS, MULTADV, DIVJR, DIVBAS, DIVADV, MIXED, PLCVALCOUN, PLCVALPLCV, ROUNDING, ADVREGRADD, ADVREGRSUB, ADVREGRMULT, ADVNUMBANDOPODDEVEN, ADVNUMBANDOPNUMPATT, ADVNUMBANDOPFACTORS, GEOMANDMESIANGL, GEOMANDMGRPHQA, GEOMANDMESISHAP, CLRBYNUM, CLRBYNUMPAIR, CLRBYNUMRANGES, FDPFRNUM, FDPFRDEN, FDPDECOLPLVAL, FDPDECOLNUMSEN, FDPPECOLEQU, FDPPECOLNUMSEN
-        };
-        public g_mod game_mod = g_mod.ADDJR;
+        
+        
         public string example_for_input = "3 or 6";
         public class key
         {
@@ -59,6 +79,7 @@ namespace test
         public char sign = '+';
         public ToolStripMenuItem checked_item_in_tmpl_menu;
         public List<string> vadil_data;
+        public bool auto_generate = false;
         public Workspace(int height = 20, int width = 20)
         {
             keys = new List<key>();

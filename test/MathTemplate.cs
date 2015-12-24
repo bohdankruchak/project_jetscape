@@ -11,6 +11,14 @@ namespace test
     {
         //public Interpreter(string s1) { }
         public virtual int GetResult(){return 0;}
+
+        public static T List_GetRandomNumber<T>(List<T> potential_numbers)
+        {
+            Random rand = new Random();
+            int index = rand.Next(potential_numbers.Count);
+            T result = potential_numbers[index];
+            return result;
+        }
     }
     class MathTemplate
     {
@@ -859,6 +867,9 @@ namespace test
         }
     }
 
+
+    
+
     //Клас для інтерпретації ключа типу number numerators and denominators
     class fraction_numer_denom_interpr : Interpreter
     {
@@ -905,13 +916,13 @@ namespace test
     //Клас для інтерпретації ключа типу decimal
     class fraction_decimal_interpr : Interpreter
     {
-        int number = 0;
-        string result = "";
-        List<int> potential_numbers = new List<int>();
-        Random rand = new Random();
-        bool isOnes = false;
-        bool isTens = false;
-        bool isHundreds = false;
+        static int number = 0;
+        static string result = "";
+        static List<int> potential_numbers = new List<int>();
+        static Random rand = new Random();
+        static bool isOnes = false;
+        static bool isTens = false;
+        static bool isHundreds = false;
 
         private static bool isNumberInOnes(double final_number, int peace_number)
         {
@@ -955,8 +966,110 @@ namespace test
             else return false;
         }
 
+        private static int Ones_GetRandom()
+        {
+            int answer = 0;
+            int start = number * 100;
+            int last = number * 100 + 100;
+            for (int i = start; i < number * 100 + 100; i++)
+                potential_numbers.Add(i);
+
+            answer = List_GetRandomNumber<int>(potential_numbers);
+            return answer;
+        }
+
+        private static int Tenths_GetRandom()
+        {
+            int answer = 0;
+            int start = number * 10;
+            int last = 1000;
+            int count = 0;
+            for (int i = start; i < last; i++)
+            {
+                if (count == 10)
+                {
+                    i += 90;
+                    count = 0;
+                }
+                potential_numbers.Add(i);
+                count++;
+            }
+
+            answer = List_GetRandomNumber<int>(potential_numbers);
+            return answer;
+        }
+
+        private static int Hundreds_GetRandom()
+        {
+            int answer = 0;
+
+            for (int i = number; i < 1000; i += 10)
+                potential_numbers.Add(i);
+
+            answer = List_GetRandomNumber<int>(potential_numbers);
+            return answer;
+        }
+
+        private static string Create_Output_String(int input_number)
+        {
+            string input_string = input_number.ToString();
+            string output_string = "";
+
+            if (isOnes)
+            {
+                output_string += input_string[0];
+                output_string += ".";
+                output_string += input_string[1];
+                output_string += input_string[2];
+            }
+            else if (isTens)
+            {
+                if (input_string.Length == 2)
+                {
+                    output_string += "0";
+                    output_string += ".";
+                    output_string += input_string[0];
+                    output_string += input_string[1];
+                }
+                else
+                {
+                    output_string += input_string[0];
+                    output_string += ".";
+                    output_string += input_string[1];
+                    output_string += input_string[2];
+                }
+            }
+            else if (isHundreds)
+            {
+                if (input_string.Length == 1)
+                {
+                    output_string += "0";
+                    output_string += ".";
+                    output_string += "0";
+                    output_string += input_string[0];
+                }
+                else if (input_string.Length == 2)
+                {
+                    output_string += "0";
+                    output_string += ".";
+                    output_string += input_string[0];
+                    output_string += input_string[1];
+                }
+                else
+                {
+                    output_string += input_string[0];
+                    output_string += ".";
+                    output_string += input_string[1];
+                    output_string += input_string[2];
+                }
+            }
+
+            return output_string;
+        }
+
         public fraction_decimal_interpr(string s1)
         {
+            int random_number = 0;
             if(!(s1.Contains("Not") || s1.Contains("not") || s1.Contains("NOT")))
             {
                 string[] all_words = s1.Split(' ');
@@ -970,24 +1083,13 @@ namespace test
                 }
 
                 if(isOnes)
-                {
-                    for(int i = number; i < 1000; i+=10)
-                        potential_numbers.Add(i);
-                }else if(isTens)
-                {
-                    for (int i = number+10; i < 1000; i++)
-                        potential_numbers.Add(i);
-                }
+                    random_number = Ones_GetRandom();
+                else if(isTens)
+                    random_number = Tenths_GetRandom();
+                else if (isHundreds)
+                    random_number = Hundreds_GetRandom();
 
-                for(int i = 1; i < 1000; i++)
-                {
-                    if(isOnes && isNumberInOnes(i, number))
-                        potential_numbers.Add(i);
-                    else if(isTens && isNumberInTenths(i, number))
-                        potential_numbers.Add(i);
-                    else if (isHundreds && isNumberInHundredths(i, number))
-                        potential_numbers.Add(i);
-                }
+                result = Create_Output_String(random_number);
             }
             else
             {
@@ -1003,25 +1105,6 @@ namespace test
 
         public new string GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
-            string temp = potential_numbers[index].ToString();
-            result += temp[0];
-            result += ".";
-            try
-            {
-                result += temp[1];
-            }
-                catch
-            {
-                result += "0";
-            }
-            try
-            {
-                result += temp[2];
-            }catch
-            {
-                result += "0";
-            }
             return result;
         }
     }
@@ -1098,6 +1181,7 @@ namespace test
                     {
                         string number = "0.";
                         number += i.ToString();
+                        potential_numbers.Add(number);
                         break;
                     }
                 }
@@ -1140,6 +1224,7 @@ namespace test
                     {
                         string number = "0.";
                         number += i.ToString();
+                        potential_numbers.Add(number);
                         break;
                     }
                 }
@@ -1158,6 +1243,7 @@ namespace test
         {
             int index = rand.Next(potential_numbers.Count);
             string temp = potential_numbers[index].ToString();
+            result = temp;
             return result;
         }
     }
@@ -1168,8 +1254,6 @@ namespace test
         static List<string> potential_numbers = new List<string>();
         static Random rand = new Random();
         string result = "";
-        int first_number = 0;
-        int last_number = 0;
 
         private static string Create_string_to_output(string first_num,string second_num)
         {
@@ -1227,12 +1311,14 @@ namespace test
             }
             #endregion
 
+            potential_numbers = potential_numbers.Distinct().ToList();
+
             //Випадково вибираємо число
             int index = rand.Next(potential_numbers.Count);
             string temp = potential_numbers[index];
             final_num += temp[0];
             final_num += ".";
-            for (int i = 2; i < temp.Length;i++)
+            for (int i = 1; i < temp.Length;i++)
                 final_num += temp[i];
 
             return final_num;
