@@ -84,11 +84,11 @@ namespace test
                         sf.Alignment = StringAlignment.Center;
                         sf.LineAlignment = StringAlignment.Center;
                         //if chosen "Regroping" aligment by right side
-                        if (workspace_ob.game_mod == test.Workspace.g_mod.ALGEBRA_MIDD)
-                        {
-                            sf.Alignment = StringAlignment.Far;
-                            fn = new Font(fn.Name, fn.Size, FontStyle.Underline, fn.Unit);
-                        }
+                        //if (workspace_ob.game_mod == test.Workspace.g_mod.ALGEBRA_MIDD)
+                        //{
+                        //    sf.Alignment = StringAlignment.Far;
+                        //    fn = new Font(fn.Name, fn.Size, FontStyle.Underline, fn.Unit);
+                        //}
                         e.Graphics.DrawString(workspace_ob.field_ex.str_fild[i][j], fn, br, temp_rc, sf);
                     }
                 }
@@ -130,33 +130,7 @@ namespace test
             Refresh();
         }
 
-        private void btn_addKey_Click(object sender, EventArgs e)
-        {
-            textBox_info.Text = "";
-            if (workspace_ob.game_mod == Workspace.g_mod.ADDJR || workspace_ob.game_mod == Workspace.g_mod.MULTJR || workspace_ob.game_mod == Workspace.g_mod.SUBJR || workspace_ob.game_mod == Workspace.g_mod.DIVJR)
-            {
-                InputJrKey nk = new InputJrKey();
-                nk.workspace_ob = this.workspace_ob;
-                nk.ShowDialog();
-                this.workspace_ob = nk.workspace_ob;
-            }
-            else if (workspace_ob.game_mod == Workspace.g_mod.ADDBAS || workspace_ob.game_mod == Workspace.g_mod.MULTBAS || workspace_ob.game_mod == Workspace.g_mod.SUBBAS || workspace_ob.game_mod == Workspace.g_mod.DIVBAS)
-            {
-                InputBasicKey nk = new InputBasicKey();
-                nk.workspace_ob = this.workspace_ob;
-                nk.ShowDialog();
-                this.workspace_ob = nk.workspace_ob;
-            }
-            else if (workspace_ob.game_mod == Workspace.g_mod.MIXED || workspace_ob.game_mod == Workspace.g_mod.ADDADV || workspace_ob.game_mod == Workspace.g_mod.MULTADV || workspace_ob.game_mod == Workspace.g_mod.SUBADV || workspace_ob.game_mod == Workspace.g_mod.DIVADV)
-            {
-                InputAdvKey nk = new InputAdvKey();
-                nk.workspace_ob = this.workspace_ob;
-                nk.ShowDialog();
-                this.workspace_ob = nk.workspace_ob;
-            }
-           
-            update_dataGridView1();
-        }
+        
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -220,14 +194,45 @@ namespace test
             Close();
         }
 
-        
+        private void button_add_color_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                workspace_ob.keys.Add(new Workspace.key("", colorDialog1.Color));
+            }
+            update_dataGridView1();
+        }
 
-        
+        private void button_delete_color_Click(object sender, EventArgs e)
+        {
+            if (workspace_ob.keys.Count > 0)
+            {
+                workspace_ob.keys.RemoveAt(dataGridView1.CurrentRow.Index);
+                dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+            }
+        }
 
-        
+        private void button_generate_num_Click(object sender, EventArgs e)
+        {
+            textBox_info.Text = "";
+            
+            if (workspace_ob.keys.Count != 0)
+            {
+                if (workspace_ob.op.game_mod == Workspace.options.g_mod.BASIC_EVEN_ODD && workspace_ob.keys.Count < 2)
+                {
+                    textBox_info.Text = "Please, add more keys.";
+                    return;
+                }
+                else
+                {
+                    GenereteNumbers.workspace = workspace_ob;
+                    GenereteNumbers.Generate_Number();
+                    update_dataGridView1();
+                } 
+            }
+        }
 
-        
-
+ 
         
     }
 }

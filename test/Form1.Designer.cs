@@ -41,9 +41,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_addKey = new System.Windows.Forms.Button();
-            this.btn_deleteKey = new System.Windows.Forms.Button();
             this.textBox_info = new System.Windows.Forms.TextBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.button_add_color = new System.Windows.Forms.Button();
+            this.button_delete_color = new System.Windows.Forms.Button();
+            this.button_generate_num = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -73,26 +75,26 @@
             // openPDFToolStripMenuItem
             // 
             this.openPDFToolStripMenuItem.Name = "openPDFToolStripMenuItem";
-            this.openPDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openPDFToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.openPDFToolStripMenuItem.Text = "Open PDF";
             // 
             // generatePDFToolStripMenuItem
             // 
             this.generatePDFToolStripMenuItem.Name = "generatePDFToolStripMenuItem";
-            this.generatePDFToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generatePDFToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.generatePDFToolStripMenuItem.Text = "Generate PDF";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -160,46 +162,57 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // btn_addKey
-            // 
-            this.btn_addKey.Location = new System.Drawing.Point(637, 208);
-            this.btn_addKey.Name = "btn_addKey";
-            this.btn_addKey.Size = new System.Drawing.Size(99, 23);
-            this.btn_addKey.TabIndex = 5;
-            this.btn_addKey.Text = "Add Key";
-            this.btn_addKey.UseVisualStyleBackColor = true;
-            this.btn_addKey.Click += new System.EventHandler(this.btn_addKey_Click);
-            // 
-            // btn_deleteKey
-            // 
-            this.btn_deleteKey.Location = new System.Drawing.Point(741, 208);
-            this.btn_deleteKey.Name = "btn_deleteKey";
-            this.btn_deleteKey.Size = new System.Drawing.Size(99, 23);
-            this.btn_deleteKey.TabIndex = 6;
-            this.btn_deleteKey.Text = "Delete Key";
-            this.btn_deleteKey.UseVisualStyleBackColor = true;
-            this.btn_deleteKey.Click += new System.EventHandler(this.btn_deleteKey_Click);
-            // 
             // textBox_info
             // 
             this.textBox_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_info.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_info.Location = new System.Drawing.Point(637, 276);
+            this.textBox_info.Location = new System.Drawing.Point(637, 275);
             this.textBox_info.Multiline = true;
             this.textBox_info.Name = "textBox_info";
             this.textBox_info.ReadOnly = true;
             this.textBox_info.Size = new System.Drawing.Size(203, 73);
             this.textBox_info.TabIndex = 7;
             // 
+            // button_add_color
+            // 
+            this.button_add_color.Location = new System.Drawing.Point(637, 209);
+            this.button_add_color.Name = "button_add_color";
+            this.button_add_color.Size = new System.Drawing.Size(99, 23);
+            this.button_add_color.TabIndex = 8;
+            this.button_add_color.Text = "Add Color";
+            this.button_add_color.UseVisualStyleBackColor = true;
+            this.button_add_color.Click += new System.EventHandler(this.button_add_color_Click);
+            // 
+            // button_delete_color
+            // 
+            this.button_delete_color.Location = new System.Drawing.Point(741, 209);
+            this.button_delete_color.Name = "button_delete_color";
+            this.button_delete_color.Size = new System.Drawing.Size(99, 23);
+            this.button_delete_color.TabIndex = 8;
+            this.button_delete_color.Text = "Delete Color";
+            this.button_delete_color.UseVisualStyleBackColor = true;
+            this.button_delete_color.Click += new System.EventHandler(this.button_delete_color_Click);
+            // 
+            // button_generate_num
+            // 
+            this.button_generate_num.Location = new System.Drawing.Point(637, 238);
+            this.button_generate_num.Name = "button_generate_num";
+            this.button_generate_num.Size = new System.Drawing.Size(203, 27);
+            this.button_generate_num.TabIndex = 9;
+            this.button_generate_num.Text = "Generate Numbers";
+            this.button_generate_num.UseVisualStyleBackColor = true;
+            this.button_generate_num.Click += new System.EventHandler(this.button_generate_num_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 641);
+            this.Controls.Add(this.button_generate_num);
+            this.Controls.Add(this.button_delete_color);
+            this.Controls.Add(this.button_add_color);
             this.Controls.Add(this.textBox_info);
-            this.Controls.Add(this.btn_deleteKey);
-            this.Controls.Add(this.btn_addKey);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -233,11 +246,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ToolStripMenuItem cleanColorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.Button btn_addKey;
-        private System.Windows.Forms.Button btn_deleteKey;
         private System.Windows.Forms.ToolStripMenuItem cleanAllToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox_info;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button button_add_color;
+        private System.Windows.Forms.Button button_delete_color;
+        private System.Windows.Forms.Button button_generate_num;
     }
 }
 

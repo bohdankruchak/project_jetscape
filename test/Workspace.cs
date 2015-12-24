@@ -15,23 +15,33 @@ namespace test
         {
             public enum g_mod
             {
-                BASIC_EVEN_ODD, BASIC_PRIM_COMP, BASIC_EVEN_MYST, ALGEBRA_SIMP, ALGEBRA_MIDD, ALGEBRA_HARD_FRAC, ALGEBRA_HARD_DEC, ALGEBRA_HARD_PERC, 
+                BASIC_EVEN_ODD, BASIC_PRIM_COMP, BASIC_MYST, ALGEBRA_SIMP, ALGEBRA_MIDD_REGROPING, ALGEBRA_MIDD_ROUNDING, ALGEBRA_HARD_FRAC, ALGEBRA_HARD_DEC, ALGEBRA_HARD_PERC, GEOM_ANGLES, GEOM_QUADR, GEOM_SHAPES, NONE
             };
-            public enum arithmetic_op
-            {
-                ADDITION, SUBSTRACTION, MULTIPLICATION, DIVISION, NONE
-            };
+            
             public enum complexity
             {
                 JUNIOR, BASIC, ADVANCED, NONE
             };
+            public enum fractions
+            {
+                DIFFERENT, EQUAL_NUM, EQUAL_DEN, NONE
+            }
+            public enum algebra_middle_round{
+                HUNDREDS, TENS, NONE
+            }
 
             public g_mod game_mod = g_mod.BASIC_EVEN_ODD;
-            public arithmetic_op active_arithmetic_op= arithmetic_op.NONE;
+            public bool addition_act = false;
+            public bool subtraction_act = false;
+            public bool division_act = false;
+            public bool multiplication_act = false;
+            public fractions active_fractions_mode = fractions.DIFFERENT;
             public complexity active_complexity = complexity.NONE;
-            int active_range_first;
-            int active_range_second;
+            public int active_range_first;
+            public int active_range_second;
+            public algebra_middle_round active_algebra_middle_round = algebra_middle_round.NONE;
         }
+        public options op = new options();
         public string active_mode_name = "";
         public class field
         {
@@ -58,7 +68,6 @@ namespace test
                 }
             }
         }
-        
         
         public string example_for_input = "3 or 6";
         public class key
