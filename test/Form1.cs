@@ -1,15 +1,16 @@
-﻿using System;
+﻿using AxPDFXEdit;
+using PDFXEdit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing.Drawing2D;
-using System.IO;
 using System.Windows.Forms;
-
 using test;
 
 
@@ -113,11 +114,13 @@ namespace test
                     e.Graphics.DrawString(workspace_ob.field_ex.str_fild[i_curr][j_curr], fn, br, temp_rc, sf);
                 }
             }
+            textBox_info.Text = "";
             workspace_ob.clean_colors = false;
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
+            butoon_generate_field.Select();
             if ((e.X < 15 || e.X > workspace_ob.field_ex.size_rect * 19 + 15 + workspace_ob.field_ex.size_rect) || (e.Y < 27 || e.Y > workspace_ob.field_ex.size_rect * 19 + 27 + +workspace_ob.field_ex.size_rect))
             {
                 return;
@@ -155,33 +158,6 @@ namespace test
             Refresh();
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TabOptions op = new TabOptions();
-            if (workspace_ob.op.game_mod == Workspace.options.g_mod.BASIC_EVEN_ODD && workspace_ob.keys.Count < 2)
-            {
-                textBox_info.Text = "Please, add more keys.";
-                return;
-            }
-            op.workspace_ob = this.workspace_ob;
-            op.workspace_ob_last = this.workspace_ob;
-            if (op.ShowDialog() != DialogResult.OK)
-            {
-                this.workspace_ob = op.workspace_ob;
-                foreach (Workspace.key a in workspace_ob.keys)
-                {
-                    a.str = "";
-                }
-                GenereteNumbers.workspace = workspace_ob;
-                GenereteNumbers.Generate_Number();
-                update_dataGridView1();
-                Refresh();
-            }
-            else return;
-            
-        }
-
-        
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -332,10 +308,11 @@ namespace test
 
         private void button_add_color_Click(object sender, EventArgs e)
         {
-           
+            colorDialog1.CustomColors = workspace_ob.op.custom_colors;
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 workspace_ob.keys.Add(new Workspace.key("", colorDialog1.Color));
+                workspace_ob.op.custom_colors = colorDialog1.CustomColors;
             }
             if (workspace_ob.keys.Count < 2)
             {
@@ -409,33 +386,6 @@ namespace test
             Refresh();
         }
 
-        private void openTemplateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                clean_keys();
-                for (int i = 0; i < workspace_ob.field_ex.clr_fild.Count; i++)
-                {
-                    for (int j = 0; j < workspace_ob.field_ex.clr_fild.Count; j++)
-                    {
-                        workspace_ob.field_ex.clr_fild[i][j] = Color.Transparent;
-                        workspace_ob.field_ex.str_fild[i][j] = "";
-                    }
-                }
-
-                string for_open;
-                string path = openFileDialog1.FileName;
-                using (var streamReader = new StreamReader(path, Encoding.UTF8))
-                {
-                    for_open = streamReader.ReadToEnd();
-                }
-                OpenSave.interpretate_string_for_open(for_open, workspace_ob);
-                Refresh();
-
-                update_dataGridView1();
-            }
-        }
-
         private void saveTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -448,54 +398,8 @@ namespace test
 
         }
 
-        private void Form1_DragDrop(object sender, DragEventArgs e)
-        {
-        }
+        
 
-        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog op = new OpenFileDialog();
-            if (op.ShowDialog() == DialogResult.OK)
-            {
-                string file_ext = op.FileName;
-                Image img = Image.FromFile(file_ext);
-                Bitmap temp = new Bitmap(img);
-                Graphics g = Graphics.FromImage(temp);
-                clean_keys();
-                img = ResizeOrigImg(img, workspace_ob.field_ex.width, workspace_ob.field_ex.heigth);
-
-                Bitmap bmp = new Bitmap(img);
-                for (int i = 0; i < workspace_ob.field_ex.width; i++)
-                {
-                    for (int j = 0; j < workspace_ob.field_ex.heigth; j++)
-                    {
-
-                        bool ifColorExist = false;
-                        for (int z = 0; z < workspace_ob.keys.Count; z++)
-                        {
-                            if (workspace_ob.keys[z].clr == bmp.GetPixel(i, j)) ifColorExist = true;
-                        }
-                        if (ifColorExist == false) workspace_ob.keys.Add(new Workspace.key("", bmp.GetPixel(i, j)));
-                    }
-                }
-                Minimize_All_Image_Colors();
-                for (int i = 0; i < workspace_ob.field_ex.width; i++)
-                {
-                    for (int j = 0; j < workspace_ob.field_ex.heigth; j++)
-                    {
-                        workspace_ob.field_ex.clr_fild[i][j] = Minimize_Image_Colors(bmp.GetPixel(i, j));
-                        bool ifColorExist = false;
-                        for (int z = 0; z < workspace_ob.keys.Count; z++)
-                        {
-                            if (workspace_ob.keys[z].clr == workspace_ob.field_ex.clr_fild[i][j]) ifColorExist = true;
-                        }
-                        if (ifColorExist == false) workspace_ob.keys.Add(new Workspace.key("", workspace_ob.field_ex.clr_fild[i][j]));
-                    }
-                }
-                update_dataGridView1();
-                Refresh();
-            }
-        }
         public Image ResizeOrigImg(Image source, int width, int height)
         {
             Image dest = new Bitmap(width, height);
@@ -590,10 +494,7 @@ namespace test
                     }
                 }
             }
-
-
             List<Workspace.key> keys_temp = new List<Workspace.key>();
-            
             for (int i = 0; i < workspace_ob.keys.Count; i++)
             {
                 bool ifExist = false;
@@ -618,15 +519,15 @@ namespace test
 
             if (workspace_ob.field_ex.width > 20)
             {
-                vScrollBar1.Visible = true;
-                vScrollBar1.Minimum = 1;
-                vScrollBar1.Maximum = (workspace_ob.field_ex.width - 19) * 5;
+                hScrollBar1.Visible = true;
+                hScrollBar1.Minimum = 1;
+                hScrollBar1.Maximum = (workspace_ob.field_ex.width - 19) * 5;
             }
             if (workspace_ob.field_ex.heigth > 20)
             {
-                hScrollBar1.Visible = true;
-                hScrollBar1.Minimum = 1;
-                hScrollBar1.Maximum = (workspace_ob.field_ex.heigth - 19) * 5;
+                vScrollBar1.Visible = true;
+                vScrollBar1.Minimum = 1;
+                vScrollBar1.Maximum = (workspace_ob.field_ex.heigth - 19) * 5;
             }
             if (workspace_ob.field_ex.width <= 20 && workspace_ob.field_ex.heigth > workspace_ob.field_ex.width)
             {
@@ -649,6 +550,7 @@ namespace test
         {
             if (workspace_ob.field_ex.heigth > 20) { }
             if (workspace_ob.field_ex.width > 20) { }
+            
         }
 
         private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
@@ -663,12 +565,283 @@ namespace test
             Refresh();
         }
 
-        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsPNGImage(string imageDest)
         {
-            SaveAsImage sai_dlg = new SaveAsImage();
-            sai_dlg.workspace_ob = workspace_ob;
-            sai_dlg.ShowDialog();
+            IXC_PageFormat nFormat = IXC_PageFormat.PageFormat_8Indexed;
+            IIXC_Inst inst = (IIXC_Inst)axPXV_Control1.Inst.GetExtension("IXC");
+            IAUX_Inst inst_aux = (IAUX_Inst)axPXV_Control1.Inst.GetExtension("AUX");
+            IIXC_Page page_ixc = inst.Page_CreateEmpty((uint)workspace_ob.field_ex.width, (uint)workspace_ob.field_ex.heigth, nFormat, 324345);
+            page_ixc.PaletteSize = (uint)workspace_ob.keys.Count;
+            for (int i = 0; i < workspace_ob.field_ex.width; i++)
+            {
+                for (int j = 0; j < workspace_ob.field_ex.heigth; j++)
+                {
+                    Color clr = workspace_ob.field_ex.clr_fild[i][j];
+                    uint clgr = (uint)((byte)(clr.R) | ((UInt16)((byte)(clr.G)) << 8)) | (((UInt32)(byte)(clr.B)) << 16);
+                    page_ixc.SetPixel(i, j, (uint)clgr, (uint)IXC_ColorFlags.Color_AddColor);
+                }
+            }
+            page_ixc.ConvertToFormat(nFormat);
+            IIXC_Image img = inst.CreateEmptyImage();
+            img.InsertPage(page_ixc);
+            page_ixc.set_FmtInt((uint)IXC_FormatParametersIDS.FP_ID_FILTER, 0);
+            page_ixc.set_FmtInt((uint)IXC_FormatParametersIDS.FP_ID_FORMAT, (uint)IXC_ImageFileFormatIDs.FMT_PNG_ID);
+            page_ixc.set_FmtInt((uint)IXC_FormatParametersIDS.FP_ID_ITYPE, 16);
+            page_ixc.set_FmtInt((uint)IXC_FormatParametersIDS.FP_ID_COMP_LEVEL, 2);
+            page_ixc.set_FmtInt((uint)IXC_FormatParametersIDS.FP_ID_COMP_TYPE, 0);
+            img.Save(imageDest, IXC_CreationDisposition.CreationDisposition_Overwrite);
+        }
 
+        private void saveAsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            saveFile();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFile(false);
+        }
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            
+        }
+        private void Form1_DragLeave(object sender, EventArgs e)
+        {
+            DragEventArgs arg = workspace_ob.dragAndDropEnterArg;
+            string[] objects = (string[])arg.Data.GetData(DataFormats.FileDrop);
+            if (objects.Count() > 1) { return; }
+            string[] file_name = objects[0].Split('.');
+            if (file_name[file_name.Count() - 1].ToLower() == "png" || file_name[file_name.Count() - 1].ToLower() == "jpeg" || file_name[file_name.Count() - 1].ToLower() == "gif" || file_name[file_name.Count() - 1].ToLower() == "bmp" || file_name[file_name.Count() - 1].ToLower() == "ico"|| file_name[file_name.Count() - 1].ToLower() == "jpg")
+            {
+                openFile(true, 1, objects[0]);
+            }
+            else if (file_name[file_name.Count() - 1].ToLower() == "cnf")
+            {
+                openFile(true, 2, objects[0]);
+            }
+            else if (file_name[file_name.Count() - 1].ToLower() == "tmpl")
+            {
+                openFile(true, 3, objects[0]);
+            }
+            else 
+            {
+                textBox_info.Text = "File is incorrect.";
+                return;
+            }
+            this.Cursor = Cursors.Default;
+            Refresh();
+        }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            workspace_ob.dragAndDropEnterArg = e;
+            e.Data.ToString();
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) &&
+                ((e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move))
+            e.Effect = DragDropEffects.Move;
+
+            string[] objects = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (objects.Count() > 1) { return; }
+            string[] file_name = objects[0].Split('.');
+            if (!(file_name[file_name.Count() - 1].ToLower() == "cnf" || file_name[file_name.Count() - 1].ToLower() == "tmpl" || file_name[file_name.Count() - 1].ToLower() == "png" || file_name[file_name.Count() - 1].ToLower() == "jpeg" || file_name[file_name.Count() - 1].ToLower() == "gif" || file_name[file_name.Count() - 1].ToLower() == "bmp" || file_name[file_name.Count() - 1].ToLower() == "ico"|| file_name[file_name.Count() - 1].ToLower() == "jpg"))
+            {
+                textBox_info.Text = "File is incorrect.";
+                return;
+            }         
+        }
+
+        private void optionsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TabOptions op = new TabOptions();
+            if (workspace_ob.op.game_mod == Workspace.options.g_mod.BASIC_EVEN_ODD && workspace_ob.keys.Count < 2)
+            {
+                textBox_info.Text = "Please, add more keys.";
+                return;
+            }
+            op.workspace_ob = this.workspace_ob;
+            op.workspace_ob_last = this.workspace_ob;
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+                this.workspace_ob = op.workspace_ob;
+                foreach (Workspace.key a in workspace_ob.keys)
+                {
+                    a.str = "";
+                }
+                GenereteNumbers.workspace = workspace_ob;
+                GenereteNumbers.Generate_Number();
+                update_dataGridView1();
+                Refresh();
+            }
+            else return;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.S && e.Control)
+            {
+                saveFile();
+            }
+            else if (e.KeyCode == Keys.O && e.Control)
+            {
+                openFile(false);
+            }
+        }
+
+        private void Form1_Scroll(object sender, ScrollEventArgs e)
+        {
+            workspace_ob.field_ex.mudslide_for_vskroll = vScrollBar1.Value / 5;
+        }
+
+        private void butoon_generate_field_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.S && e.Control)
+            {
+                saveFile();
+            }
+            else if (e.KeyCode == Keys.O && e.Control)
+            {
+                openFile(false);
+            }
+        }
+        private void openFile(bool dragAndDrop, int slIndex = 0, string path_in = "")
+        {
+            string path = path_in;
+            int selected = slIndex;
+            if (dragAndDrop == false)
+            {
+                openFileDialog1.Filter = "Image Files| *.png; *.jpeg; *.gif; *bmp; *.jpg; *.ico|Template Files| *.tmpl|Configuration Files| *.cnf";
+                openFileDialog1.DefaultExt = "png";
+                openFileDialog1.FileName = "SmartColoring.png";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    selected = openFileDialog1.FilterIndex;
+                    path = openFileDialog1.FileName;
+                }
+                else{return;}
+            }
+            
+            #region open_image
+            if (selected == 1)
+            {
+                try
+                {
+                    Image img = Image.FromFile(path);
+                    Bitmap temp = new Bitmap(img);
+                    Graphics g = Graphics.FromImage(temp);
+                    clean_keys();
+                    img = ResizeOrigImg(img, workspace_ob.field_ex.width, workspace_ob.field_ex.heigth);
+                    Bitmap bmp = new Bitmap(img);
+                    for (int i = 0; i < workspace_ob.field_ex.width; i++)
+                    {
+                        for (int j = 0; j < workspace_ob.field_ex.heigth; j++)
+                        {
+
+                            bool ifColorExist = false;
+                            for (int z = 0; z < workspace_ob.keys.Count; z++)
+                            {
+                                if (workspace_ob.keys[z].clr == bmp.GetPixel(i, j)) ifColorExist = true;
+                            }
+                            if (ifColorExist == false) workspace_ob.keys.Add(new Workspace.key("", bmp.GetPixel(i, j)));
+                        }
+                    }
+                    Minimize_All_Image_Colors();
+                    for (int i = 0; i < workspace_ob.field_ex.width; i++)
+                    {
+                        for (int j = 0; j < workspace_ob.field_ex.heigth; j++)
+                        {
+                            workspace_ob.field_ex.clr_fild[i][j] = Minimize_Image_Colors(bmp.GetPixel(i, j));
+                            bool ifColorExist = false;
+                            for (int z = 0; z < workspace_ob.keys.Count; z++)
+                            {
+                                if (workspace_ob.keys[z].clr == workspace_ob.field_ex.clr_fild[i][j]) ifColorExist = true;
+                            }
+                            if (ifColorExist == false) workspace_ob.keys.Add(new Workspace.key("", workspace_ob.field_ex.clr_fild[i][j]));
+                        }
+                    }
+                    update_dataGridView1();
+                    Refresh();
+                }
+                catch
+                {
+                    textBox_info.Text = "File is incorrect.";
+                }
+            }
+            #endregion
+            #region open_template
+            else if (selected == 2)
+            {
+                clean_keys();
+                for (int i = 0; i < workspace_ob.field_ex.clr_fild.Count; i++)
+                {
+                    for (int j = 0; j < workspace_ob.field_ex.clr_fild.Count; j++)
+                    {
+                        workspace_ob.field_ex.clr_fild[i][j] = Color.Transparent;
+                        workspace_ob.field_ex.str_fild[i][j] = "";
+                    }
+                }
+
+                string for_open;
+                using (var streamReader = new StreamReader(path, Encoding.UTF8))
+                {
+                    for_open = streamReader.ReadToEnd();
+                }
+                try
+                {
+                    OpenSave.interpretate_string_for_open(for_open, workspace_ob);
+                }
+                catch (System.FormatException)
+                {
+                    textBox_info.Text = "File is incorrect";
+                }
+                Refresh();
+                update_dataGridView1();
+            }
+            #endregion
+            #region open_configure
+            else if (selected == 3)
+            {
+                string for_open;
+                using (var streamReader = new StreamReader(path, Encoding.UTF8))
+                {
+                    for_open = streamReader.ReadToEnd();
+                }
+                try
+                {
+                    OpenSave.opens_string_for_save_conf(for_open, workspace_ob);
+                }
+                catch (System.FormatException)
+                {
+                    textBox_info.Text = "File is incorrect.";
+                }
+
+                Refresh();
+            }
+            #endregion
+            Refresh();
+        }
+        private void saveFile()
+        {
+            saveFileDialog1.Filter = "PNG Image Files| *.png|Template Files| *.tmpl|Configuration Files| *.cnf";
+            saveFileDialog1.DefaultExt = "png";
+            saveFileDialog1.FileName = "SmartColoring.png";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                int selected = saveFileDialog1.FilterIndex;
+                if (selected == 1)
+                {
+                    SaveAsPNGImage(saveFileDialog1.FileName);
+                }
+                else if (selected == 2)
+                {
+                    string for_save = OpenSave.get_string_for_save(workspace_ob);
+                    File.WriteAllText(saveFileDialog1.FileName, for_save);
+                }
+                else if (selected == 3)
+                {
+                    string for_save = OpenSave.saves_string_for_save_conf(workspace_ob);
+                    File.WriteAllText(saveFileDialog1.FileName, for_save);
+                }
+            }
         }
     }
 }

@@ -17,7 +17,6 @@ namespace test
             {
                 BASIC_EVEN_ODD, BASIC_PRIM_COMP, BASIC_MYST, ALGEBRA_SIMP, ALGEBRA_MIDD_REGROPING, ALGEBRA_MIDD_ROUNDING, ALGEBRA_HARD_FRAC, ALGEBRA_HARD_DEC, ALGEBRA_HARD_PERC, GEOM_ANGLES, GEOM_QUADR, GEOM_SHAPES, NONE
             };
-            
             public enum complexity
             {
                 JUNIOR, BASIC, ADVANCED, ADVANCED_COMA, ADVANCED_HYPHEN, NONE
@@ -40,7 +39,13 @@ namespace test
             public int active_range_first;
             public int active_range_second;
             public algebra_middle_round active_algebra_middle_round = algebra_middle_round.NONE;
+            public int orientation_of_document = 0;
+            public int[] custom_colors = new int[]{6916092, 15195440, 16107657, 1836924,
+   3758726, 12566463, 7526079, 7405793, 6945974, 241502, 2296476, 5130294,
+   3102017, 7324121, 14993507, 11730944};
+            
         }
+        public DragEventArgs dragAndDropEnterArg;
         public options op = new options();
         public class field
         {

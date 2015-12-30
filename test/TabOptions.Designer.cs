@@ -750,6 +750,7 @@
             // 
             // button_save
             // 
+            this.button_save.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button_save.Location = new System.Drawing.Point(234, 237);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(75, 23);
@@ -778,6 +779,7 @@
             this.Controls.Add(this.button_save);
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.algebraTab);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "TabOptions";
             this.Text = "TabOptions";
             this.Shown += new System.EventHandler(this.TabOptions_Shown);

@@ -36,6 +36,8 @@ namespace test
         
         private void Options_Shown(object sender, EventArgs e)
         {
+            if (workspace_ob.op.orientation_of_document == 0) radioButton_ver.Checked = true;
+            else radioButton_hor.Checked = true;
             numericUpDown_width.Value = workspace_ob.field_ex.width;
             numericUpDown_height.Value = workspace_ob.field_ex.heigth;
             trackBar_delta_for_colors_open_image.Value = workspace_ob.delta_for_open_image / 26;
@@ -65,6 +67,22 @@ namespace test
             if (checkBox1.Checked == true)
             {
                 numericUpDown_height.Value = numericUpDown_width.Value;
+            }
+        }
+
+        private void radioButton_ver_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_ver.Checked == true)
+            {
+                workspace_ob.op.orientation_of_document = 0;
+                numericUpDown_width.Maximum = 20;
+                numericUpDown_height.Maximum = 25;
+            }
+            else
+            {
+                workspace_ob.op.orientation_of_document = 1;
+                numericUpDown_width.Maximum = 25;
+                numericUpDown_height.Maximum = 20;
             }
         }
     }

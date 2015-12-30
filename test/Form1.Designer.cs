@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generatePDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cleanColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,76 +55,64 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
-            this.saveAsImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.axPXV_Control1 = new AxPDFXEdit.AxPXV_Control();
+            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axPXV_Control1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(868, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(128, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openImageToolStripMenuItem,
-            this.openTemplateToolStripMenuItem,
-            this.saveTemplateToolStripMenuItem,
-            this.saveAsImageToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
             this.generatePDFToolStripMenuItem,
-            this.optionsToolStripMenuItem,
+            this.printToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // openImageToolStripMenuItem
+            // openToolStripMenuItem
             // 
-            this.openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
-            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.openImageToolStripMenuItem.Text = "Open Image";
-            this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // openTemplateToolStripMenuItem
+            // saveAsToolStripMenuItem
             // 
-            this.openTemplateToolStripMenuItem.Name = "openTemplateToolStripMenuItem";
-            this.openTemplateToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.openTemplateToolStripMenuItem.Text = "Open Template";
-            this.openTemplateToolStripMenuItem.Click += new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
-            // 
-            // saveTemplateToolStripMenuItem
-            // 
-            this.saveTemplateToolStripMenuItem.Name = "saveTemplateToolStripMenuItem";
-            this.saveTemplateToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.saveTemplateToolStripMenuItem.Text = "Save Template";
-            this.saveTemplateToolStripMenuItem.Click += new System.EventHandler(this.saveTemplateToolStripMenuItem_Click);
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click_1);
             // 
             // generatePDFToolStripMenuItem
             // 
             this.generatePDFToolStripMenuItem.Name = "generatePDFToolStripMenuItem";
-            this.generatePDFToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.generatePDFToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.generatePDFToolStripMenuItem.Text = "Generate PDF";
             this.generatePDFToolStripMenuItem.Click += new System.EventHandler(this.generatePDFToolStripMenuItem_Click);
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.optionsToolStripMenuItem.Text = "Options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -134,7 +121,8 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cleanColorsToolStripMenuItem,
             this.cleanNumbersToolStripMenuItem,
-            this.cleanAllToolStripMenuItem});
+            this.cleanAllToolStripMenuItem,
+            this.optionsToolStripMenuItem1});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -171,7 +159,7 @@
             // propetiesToolStripMenuItem
             // 
             this.propetiesToolStripMenuItem.Name = "propetiesToolStripMenuItem";
-            this.propetiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.propetiesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.propetiesToolStripMenuItem.Text = "Properties";
             this.propetiesToolStripMenuItem.Click += new System.EventHandler(this.propetiesToolStripMenuItem_Click);
             // 
@@ -223,7 +211,7 @@
             this.textBox_info.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox_info.Enabled = false;
             this.textBox_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_info.Location = new System.Drawing.Point(637, 305);
+            this.textBox_info.Location = new System.Drawing.Point(653, 305);
             this.textBox_info.Multiline = true;
             this.textBox_info.Name = "textBox_info";
             this.textBox_info.ReadOnly = true;
@@ -252,13 +240,15 @@
             // 
             // butoon_generate_field
             // 
+            this.butoon_generate_field.AllowDrop = true;
             this.butoon_generate_field.Location = new System.Drawing.Point(653, 271);
             this.butoon_generate_field.Name = "butoon_generate_field";
             this.butoon_generate_field.Size = new System.Drawing.Size(203, 28);
-            this.butoon_generate_field.TabIndex = 10;
+            this.butoon_generate_field.TabIndex = 0;
             this.butoon_generate_field.Text = "Generate Field";
             this.butoon_generate_field.UseVisualStyleBackColor = true;
             this.butoon_generate_field.Click += new System.EventHandler(this.butoon_generate_field_Click);
+            this.butoon_generate_field.KeyDown += new System.Windows.Forms.KeyEventHandler(this.butoon_generate_field_KeyDown);
             // 
             // button_generate_num
             // 
@@ -294,18 +284,36 @@
             this.hScrollBar1.Visible = false;
             this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
             // 
-            // saveAsImageToolStripMenuItem
+            // axPXV_Control1
             // 
-            this.saveAsImageToolStripMenuItem.Name = "saveAsImageToolStripMenuItem";
-            this.saveAsImageToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.saveAsImageToolStripMenuItem.Text = "Save As Image";
-            this.saveAsImageToolStripMenuItem.Click += new System.EventHandler(this.saveAsImageToolStripMenuItem_Click);
+            this.axPXV_Control1.Enabled = true;
+            this.axPXV_Control1.Location = new System.Drawing.Point(833, 605);
+            this.axPXV_Control1.Name = "axPXV_Control1";
+            this.axPXV_Control1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPXV_Control1.OcxState")));
+            this.axPXV_Control1.Size = new System.Drawing.Size(192, 192);
+            this.axPXV_Control1.TabIndex = 13;
+            this.axPXV_Control1.Visible = false;
+            // 
+            // optionsToolStripMenuItem1
+            // 
+            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
+            this.optionsToolStripMenuItem1.Text = "Options";
+            this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Text = "Print";
             // 
             // Form1
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 656);
+            this.Controls.Add(this.axPXV_Control1);
             this.Controls.Add(this.hScrollBar1);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.butoon_generate_field);
@@ -317,13 +325,16 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Smart Coloring";
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Form1_Scroll);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
+            this.DragLeave += new System.EventHandler(this.Form1_DragLeave);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -331,6 +342,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axPXV_Control1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,7 +359,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ToolStripMenuItem cleanColorsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cleanAllToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox_info;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -357,16 +368,17 @@
         private System.Windows.Forms.Button butoon_generate_field;
         private System.Windows.Forms.Button button_generate_num;
         private System.Windows.Forms.ToolStripMenuItem cleanNumbersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openTemplateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveTemplateToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.ToolStripMenuItem openImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propetiesToolStripMenuItem;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.HScrollBar hScrollBar1;
-        private System.Windows.Forms.ToolStripMenuItem saveAsImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private AxPDFXEdit.AxPXV_Control axPXV_Control1;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
     }
 }
 

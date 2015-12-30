@@ -69,6 +69,7 @@ namespace test
 
         private void TabOptions_Shown(object sender, EventArgs e)
         {
+            button_save.DialogResult = DialogResult.OK;
             comboBox1.SelectedIndex = 0;
             comboBox1.Enabled = false;
             #region last_configuration
@@ -180,7 +181,7 @@ namespace test
 
         private void check_box_regr_mult_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_box_regr_add.Checked == true)
+            if (check_box_regr_mult.Checked == true)
             {
                 workspace_ob.op.game_mod = Workspace.options.g_mod.ALGEBRA_MIDD_REGROPING;
                 workspace_ob.op.multiplication_act = true;

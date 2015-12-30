@@ -26,7 +26,6 @@ C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\Interop.PDFXEdit.dl
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\AxInterop.PDFXEdit.dll
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\GameForSchool.csproj.ResolveComReference.cache
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.Pdf.resources
-C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\test.SaveAsImage.resources
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\Interop.PDFXCviewAxLib.dll
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\obj\Debug\AxInterop.PDFXCviewAxLib.dll
 C:\Users\kruch\Desktop\pdf_paint_example\test\test\bin\Debug\Interop.PDFXCviewAxLib.dll
