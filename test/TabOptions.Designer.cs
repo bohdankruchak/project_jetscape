@@ -38,30 +38,40 @@
             this.radioButton_mystery_dis = new System.Windows.Forms.RadioButton();
             this.radioButton_prime_comp = new System.Windows.Forms.RadioButton();
             this.radioButton_even_odd = new System.Windows.Forms.RadioButton();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage_alg = new System.Windows.Forms.TabPage();
             this.algebra_tabs = new System.Windows.Forms.TabControl();
             this.tabPage_alg_simple = new System.Windows.Forms.TabPage();
+            this.comboBox_alg_simpl_adv = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.textBox_alg_simple_scnd = new System.Windows.Forms.TextBox();
             this.textBox_alg_simple_frst = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton_Advanced = new System.Windows.Forms.RadioButton();
+            this.radioButton_Basic = new System.Windows.Forms.RadioButton();
+            this.radioButton_Junior = new System.Windows.Forms.RadioButton();
             this.check_box_Division = new System.Windows.Forms.CheckBox();
             this.check_box_Mult = new System.Windows.Forms.CheckBox();
             this.check_box_Subtraction = new System.Windows.Forms.CheckBox();
             this.check_box_Addition = new System.Windows.Forms.CheckBox();
             this.tabPage_alg_middle = new System.Windows.Forms.TabPage();
+            this.textBox_alg_mid_regr_scnd = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton_rounds_hun = new System.Windows.Forms.RadioButton();
             this.radioButton_rounds_ten = new System.Windows.Forms.RadioButton();
             this.group_box_regro = new System.Windows.Forms.GroupBox();
-            this.radioButton_regr_adv = new System.Windows.Forms.RadioButton();
-            this.radioButton_regr_bas = new System.Windows.Forms.RadioButton();
-            this.radioButton_regr_jun = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
             this.check_box_regr_mult = new System.Windows.Forms.CheckBox();
             this.check_box_regr_sub = new System.Windows.Forms.CheckBox();
             this.check_box_regr_add = new System.Windows.Forms.CheckBox();
+            this.textBox_alg_mid_regr_frst = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.tabPage_alg_hard = new System.Windows.Forms.TabPage();
+            this.comboBox_percent = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox_alg_hard_scnd = new System.Windows.Forms.TextBox();
             this.textBox_alg_hard_frst = new System.Windows.Forms.TextBox();
@@ -71,43 +81,35 @@
             this.radioButton_Percentages = new System.Windows.Forms.RadioButton();
             this.radioButton_decimals = new System.Windows.Forms.RadioButton();
             this.radioButton_fractions = new System.Windows.Forms.RadioButton();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage_geom = new System.Windows.Forms.TabPage();
             this.radioButton_shapes = new System.Windows.Forms.RadioButton();
             this.radioButton_qua = new System.Windows.Forms.RadioButton();
             this.radioButton_angles = new System.Windows.Forms.RadioButton();
             this.button_cancel = new System.Windows.Forms.Button();
             this.button_save = new System.Windows.Forms.Button();
             this.textBox_info_error = new System.Windows.Forms.TextBox();
-            this.radioButton_Junior = new System.Windows.Forms.RadioButton();
-            this.radioButton_Basic = new System.Windows.Forms.RadioButton();
-            this.radioButton_Advanced = new System.Windows.Forms.RadioButton();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.algebraTab.SuspendLayout();
             this.tabPage_basic.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPage_alg.SuspendLayout();
             this.algebra_tabs.SuspendLayout();
             this.tabPage_alg_simple.SuspendLayout();
             this.tabPage_alg_middle.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.group_box_regro.SuspendLayout();
             this.tabPage_alg_hard.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabPage_geom.SuspendLayout();
             this.SuspendLayout();
             // 
             // algebraTab
             // 
             this.algebraTab.Controls.Add(this.tabPage_basic);
-            this.algebraTab.Controls.Add(this.tabPage1);
-            this.algebraTab.Controls.Add(this.tabPage2);
-            this.algebraTab.Location = new System.Drawing.Point(0, -1);
+            this.algebraTab.Controls.Add(this.tabPage_alg);
+            this.algebraTab.Controls.Add(this.tabPage_geom);
+            this.algebraTab.Location = new System.Drawing.Point(2, 1);
             this.algebraTab.Name = "algebraTab";
             this.algebraTab.SelectedIndex = 0;
-            this.algebraTab.Size = new System.Drawing.Size(281, 239);
-            this.algebraTab.TabIndex = 0;
+            this.algebraTab.Size = new System.Drawing.Size(281, 235);
+            this.algebraTab.TabIndex = 2;
             // 
             // tabPage_basic
             // 
@@ -123,7 +125,7 @@
             this.tabPage_basic.Location = new System.Drawing.Point(4, 22);
             this.tabPage_basic.Name = "tabPage_basic";
             this.tabPage_basic.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_basic.Size = new System.Drawing.Size(273, 213);
+            this.tabPage_basic.Size = new System.Drawing.Size(273, 209);
             this.tabPage_basic.TabIndex = 2;
             this.tabPage_basic.Text = "Basic";
             this.tabPage_basic.Click += new System.EventHandler(this.tabPage_basic_Click);
@@ -211,32 +213,32 @@
             this.radioButton_even_odd.UseVisualStyleBackColor = true;
             this.radioButton_even_odd.CheckedChanged += new System.EventHandler(this.radioButton_even_odd_CheckedChanged);
             // 
-            // tabPage1
+            // tabPage_alg
             // 
-            this.tabPage1.Controls.Add(this.algebra_tabs);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(273, 213);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Algebra";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage_alg.Controls.Add(this.algebra_tabs);
+            this.tabPage_alg.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_alg.Name = "tabPage_alg";
+            this.tabPage_alg.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_alg.Size = new System.Drawing.Size(273, 209);
+            this.tabPage_alg.TabIndex = 0;
+            this.tabPage_alg.Text = "Algebra";
+            this.tabPage_alg.UseVisualStyleBackColor = true;
             // 
             // algebra_tabs
             // 
             this.algebra_tabs.Controls.Add(this.tabPage_alg_simple);
             this.algebra_tabs.Controls.Add(this.tabPage_alg_middle);
             this.algebra_tabs.Controls.Add(this.tabPage_alg_hard);
-            this.algebra_tabs.Location = new System.Drawing.Point(3, 0);
+            this.algebra_tabs.Location = new System.Drawing.Point(-5, 0);
             this.algebra_tabs.Name = "algebra_tabs";
             this.algebra_tabs.SelectedIndex = 0;
-            this.algebra_tabs.Size = new System.Drawing.Size(269, 210);
+            this.algebra_tabs.Size = new System.Drawing.Size(284, 213);
             this.algebra_tabs.TabIndex = 1;
             // 
             // tabPage_alg_simple
             // 
             this.tabPage_alg_simple.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage_alg_simple.Controls.Add(this.comboBox2);
+            this.tabPage_alg_simple.Controls.Add(this.comboBox_alg_simpl_adv);
             this.tabPage_alg_simple.Controls.Add(this.label11);
             this.tabPage_alg_simple.Controls.Add(this.label10);
             this.tabPage_alg_simple.Controls.Add(this.textBox_alg_simple_scnd);
@@ -254,10 +256,41 @@
             this.tabPage_alg_simple.Location = new System.Drawing.Point(4, 22);
             this.tabPage_alg_simple.Name = "tabPage_alg_simple";
             this.tabPage_alg_simple.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_alg_simple.Size = new System.Drawing.Size(261, 184);
+            this.tabPage_alg_simple.Size = new System.Drawing.Size(276, 187);
             this.tabPage_alg_simple.TabIndex = 0;
             this.tabPage_alg_simple.Text = "Simple";
             this.tabPage_alg_simple.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabPage4_MouseMove);
+            // 
+            // comboBox_alg_simpl_adv
+            // 
+            this.comboBox_alg_simpl_adv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_alg_simpl_adv.Enabled = false;
+            this.comboBox_alg_simpl_adv.Items.AddRange(new object[] {
+            "Separeted by coma or single",
+            "Numbers by range"});
+            this.comboBox_alg_simpl_adv.Location = new System.Drawing.Point(161, 84);
+            this.comboBox_alg_simpl_adv.Name = "comboBox_alg_simpl_adv";
+            this.comboBox_alg_simpl_adv.Size = new System.Drawing.Size(107, 21);
+            this.comboBox_alg_simpl_adv.TabIndex = 12;
+            this.comboBox_alg_simpl_adv.SelectedIndexChanged += new System.EventHandler(this.comboBox_alg_simpl_adv_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 3);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(42, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Actions";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(141, 5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Complexity";
             // 
             // textBox_alg_simple_scnd
             // 
@@ -301,6 +334,42 @@
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Ranges of numbers";
+            // 
+            // radioButton_Advanced
+            // 
+            this.radioButton_Advanced.AutoSize = true;
+            this.radioButton_Advanced.Location = new System.Drawing.Point(144, 66);
+            this.radioButton_Advanced.Name = "radioButton_Advanced";
+            this.radioButton_Advanced.Size = new System.Drawing.Size(74, 17);
+            this.radioButton_Advanced.TabIndex = 2;
+            this.radioButton_Advanced.TabStop = true;
+            this.radioButton_Advanced.Text = "Advanced";
+            this.radioButton_Advanced.UseVisualStyleBackColor = true;
+            this.radioButton_Advanced.CheckedChanged += new System.EventHandler(this.radioButton_Advanced_CheckedChanged);
+            // 
+            // radioButton_Basic
+            // 
+            this.radioButton_Basic.AutoSize = true;
+            this.radioButton_Basic.Location = new System.Drawing.Point(144, 43);
+            this.radioButton_Basic.Name = "radioButton_Basic";
+            this.radioButton_Basic.Size = new System.Drawing.Size(51, 17);
+            this.radioButton_Basic.TabIndex = 2;
+            this.radioButton_Basic.TabStop = true;
+            this.radioButton_Basic.Text = "Basic";
+            this.radioButton_Basic.UseVisualStyleBackColor = true;
+            this.radioButton_Basic.CheckedChanged += new System.EventHandler(this.radioButton_Basic_CheckedChanged);
+            // 
+            // radioButton_Junior
+            // 
+            this.radioButton_Junior.AutoSize = true;
+            this.radioButton_Junior.Location = new System.Drawing.Point(144, 21);
+            this.radioButton_Junior.Name = "radioButton_Junior";
+            this.radioButton_Junior.Size = new System.Drawing.Size(53, 17);
+            this.radioButton_Junior.TabIndex = 2;
+            this.radioButton_Junior.TabStop = true;
+            this.radioButton_Junior.Text = "Junior";
+            this.radioButton_Junior.UseVisualStyleBackColor = true;
+            this.radioButton_Junior.CheckedChanged += new System.EventHandler(this.radioButton_Junior_CheckedChanged);
             // 
             // check_box_Division
             // 
@@ -349,23 +418,36 @@
             // tabPage_alg_middle
             // 
             this.tabPage_alg_middle.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_alg_middle.Controls.Add(this.textBox_alg_mid_regr_scnd);
             this.tabPage_alg_middle.Controls.Add(this.groupBox1);
             this.tabPage_alg_middle.Controls.Add(this.group_box_regro);
+            this.tabPage_alg_middle.Controls.Add(this.textBox_alg_mid_regr_frst);
+            this.tabPage_alg_middle.Controls.Add(this.label16);
+            this.tabPage_alg_middle.Controls.Add(this.label15);
+            this.tabPage_alg_middle.Controls.Add(this.label14);
             this.tabPage_alg_middle.Location = new System.Drawing.Point(4, 22);
             this.tabPage_alg_middle.Name = "tabPage_alg_middle";
             this.tabPage_alg_middle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_alg_middle.Size = new System.Drawing.Size(261, 184);
+            this.tabPage_alg_middle.Size = new System.Drawing.Size(276, 187);
             this.tabPage_alg_middle.TabIndex = 1;
             this.tabPage_alg_middle.Text = "Middle";
             this.tabPage_alg_middle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabPage_alg_middle_MouseMove);
+            // 
+            // textBox_alg_mid_regr_scnd
+            // 
+            this.textBox_alg_mid_regr_scnd.Location = new System.Drawing.Point(183, 46);
+            this.textBox_alg_mid_regr_scnd.MaxLength = 3;
+            this.textBox_alg_mid_regr_scnd.Name = "textBox_alg_mid_regr_scnd";
+            this.textBox_alg_mid_regr_scnd.Size = new System.Drawing.Size(63, 20);
+            this.textBox_alg_mid_regr_scnd.TabIndex = 8;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButton_rounds_hun);
             this.groupBox1.Controls.Add(this.radioButton_rounds_ten);
-            this.groupBox1.Location = new System.Drawing.Point(3, 118);
+            this.groupBox1.Location = new System.Drawing.Point(6, 118);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(255, 60);
+            this.groupBox1.Size = new System.Drawing.Size(135, 60);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rounding";
@@ -397,55 +479,24 @@
             // group_box_regro
             // 
             this.group_box_regro.Controls.Add(this.label13);
-            this.group_box_regro.Controls.Add(this.label12);
-            this.group_box_regro.Controls.Add(this.radioButton_regr_adv);
-            this.group_box_regro.Controls.Add(this.radioButton_regr_bas);
-            this.group_box_regro.Controls.Add(this.radioButton_regr_jun);
             this.group_box_regro.Controls.Add(this.check_box_regr_mult);
             this.group_box_regro.Controls.Add(this.check_box_regr_sub);
             this.group_box_regro.Controls.Add(this.check_box_regr_add);
             this.group_box_regro.Location = new System.Drawing.Point(3, 3);
             this.group_box_regro.Name = "group_box_regro";
-            this.group_box_regro.Size = new System.Drawing.Size(255, 109);
+            this.group_box_regro.Size = new System.Drawing.Size(138, 109);
             this.group_box_regro.TabIndex = 0;
             this.group_box_regro.TabStop = false;
             this.group_box_regro.Text = "Regroping";
             // 
-            // radioButton_regr_adv
+            // label13
             // 
-            this.radioButton_regr_adv.AutoSize = true;
-            this.radioButton_regr_adv.Location = new System.Drawing.Point(177, 80);
-            this.radioButton_regr_adv.Name = "radioButton_regr_adv";
-            this.radioButton_regr_adv.Size = new System.Drawing.Size(74, 17);
-            this.radioButton_regr_adv.TabIndex = 5;
-            this.radioButton_regr_adv.TabStop = true;
-            this.radioButton_regr_adv.Text = "Advanced";
-            this.radioButton_regr_adv.UseVisualStyleBackColor = true;
-            this.radioButton_regr_adv.CheckedChanged += new System.EventHandler(this.radioButton_regr_adv_CheckedChanged);
-            // 
-            // radioButton_regr_bas
-            // 
-            this.radioButton_regr_bas.AutoSize = true;
-            this.radioButton_regr_bas.Location = new System.Drawing.Point(177, 58);
-            this.radioButton_regr_bas.Name = "radioButton_regr_bas";
-            this.radioButton_regr_bas.Size = new System.Drawing.Size(51, 17);
-            this.radioButton_regr_bas.TabIndex = 6;
-            this.radioButton_regr_bas.TabStop = true;
-            this.radioButton_regr_bas.Text = "Basic";
-            this.radioButton_regr_bas.UseVisualStyleBackColor = true;
-            this.radioButton_regr_bas.CheckedChanged += new System.EventHandler(this.radioButton_regr_bas_CheckedChanged);
-            // 
-            // radioButton_regr_jun
-            // 
-            this.radioButton_regr_jun.AutoSize = true;
-            this.radioButton_regr_jun.Location = new System.Drawing.Point(177, 35);
-            this.radioButton_regr_jun.Name = "radioButton_regr_jun";
-            this.radioButton_regr_jun.Size = new System.Drawing.Size(53, 17);
-            this.radioButton_regr_jun.TabIndex = 7;
-            this.radioButton_regr_jun.TabStop = true;
-            this.radioButton_regr_jun.Text = "Junior";
-            this.radioButton_regr_jun.UseVisualStyleBackColor = true;
-            this.radioButton_regr_jun.CheckedChanged += new System.EventHandler(this.radioButton_regr_jun_CheckedChanged);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "Actions";
             // 
             // check_box_regr_mult
             // 
@@ -480,9 +531,45 @@
             this.check_box_regr_add.UseVisualStyleBackColor = true;
             this.check_box_regr_add.CheckedChanged += new System.EventHandler(this.check_box_regr_add_CheckedChanged);
             // 
+            // textBox_alg_mid_regr_frst
+            // 
+            this.textBox_alg_mid_regr_frst.Location = new System.Drawing.Point(183, 22);
+            this.textBox_alg_mid_regr_frst.MaxLength = 3;
+            this.textBox_alg_mid_regr_frst.Name = "textBox_alg_mid_regr_frst";
+            this.textBox_alg_mid_regr_frst.Size = new System.Drawing.Size(63, 20);
+            this.textBox_alg_mid_regr_frst.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(147, 6);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Ranges of numbers";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(147, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(30, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "From";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(147, 47);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(20, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "To";
+            // 
             // tabPage_alg_hard
             // 
             this.tabPage_alg_hard.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_alg_hard.Controls.Add(this.comboBox_percent);
             this.tabPage_alg_hard.Controls.Add(this.comboBox1);
             this.tabPage_alg_hard.Controls.Add(this.textBox_alg_hard_scnd);
             this.tabPage_alg_hard.Controls.Add(this.textBox_alg_hard_frst);
@@ -495,19 +582,30 @@
             this.tabPage_alg_hard.Location = new System.Drawing.Point(4, 22);
             this.tabPage_alg_hard.Name = "tabPage_alg_hard";
             this.tabPage_alg_hard.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_alg_hard.Size = new System.Drawing.Size(261, 184);
+            this.tabPage_alg_hard.Size = new System.Drawing.Size(276, 187);
             this.tabPage_alg_hard.TabIndex = 2;
             this.tabPage_alg_hard.Text = "Hard";
             this.tabPage_alg_hard.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabPage_alg_hard_MouseMove);
+            // 
+            // comboBox_percent
+            // 
+            this.comboBox_percent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_percent.Items.AddRange(new object[] {
+            "Basic",
+            "Advanced"});
+            this.comboBox_percent.Location = new System.Drawing.Point(26, 76);
+            this.comboBox_percent.Name = "comboBox_percent";
+            this.comboBox_percent.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_percent.TabIndex = 11;
+            this.comboBox_percent.SelectedIndexChanged += new System.EventHandler(this.comboBox_percent_SelectedIndexChanged);
             // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Items.AddRange(new object[] {
-            "Different numerators/denominators",
             "Equal numerators",
             "Equal denominators"});
-            this.comboBox1.Location = new System.Drawing.Point(28, 30);
+            this.comboBox1.Location = new System.Drawing.Point(26, 30);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 11;
@@ -516,7 +614,8 @@
             // textBox_alg_hard_scnd
             // 
             this.textBox_alg_hard_scnd.Enabled = false;
-            this.textBox_alg_hard_scnd.Location = new System.Drawing.Point(39, 148);
+            this.textBox_alg_hard_scnd.Location = new System.Drawing.Point(205, 54);
+            this.textBox_alg_hard_scnd.MaxLength = 3;
             this.textBox_alg_hard_scnd.Name = "textBox_alg_hard_scnd";
             this.textBox_alg_hard_scnd.Size = new System.Drawing.Size(63, 20);
             this.textBox_alg_hard_scnd.TabIndex = 9;
@@ -524,7 +623,8 @@
             // textBox_alg_hard_frst
             // 
             this.textBox_alg_hard_frst.Enabled = false;
-            this.textBox_alg_hard_frst.Location = new System.Drawing.Point(39, 124);
+            this.textBox_alg_hard_frst.Location = new System.Drawing.Point(205, 30);
+            this.textBox_alg_hard_frst.MaxLength = 3;
             this.textBox_alg_hard_frst.Name = "textBox_alg_hard_frst";
             this.textBox_alg_hard_frst.Size = new System.Drawing.Size(63, 20);
             this.textBox_alg_hard_frst.TabIndex = 10;
@@ -532,7 +632,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 155);
+            this.label7.Location = new System.Drawing.Point(169, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 13);
             this.label7.TabIndex = 6;
@@ -541,7 +641,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 133);
+            this.label8.Location = new System.Drawing.Point(169, 39);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 7;
@@ -550,7 +650,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 108);
+            this.label9.Location = new System.Drawing.Point(169, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 13);
             this.label9.TabIndex = 8;
@@ -570,7 +670,7 @@
             // radioButton_decimals
             // 
             this.radioButton_decimals.AutoSize = true;
-            this.radioButton_decimals.Location = new System.Drawing.Point(6, 80);
+            this.radioButton_decimals.Location = new System.Drawing.Point(4, 103);
             this.radioButton_decimals.Name = "radioButton_decimals";
             this.radioButton_decimals.Size = new System.Drawing.Size(68, 17);
             this.radioButton_decimals.TabIndex = 5;
@@ -589,18 +689,18 @@
             this.radioButton_fractions.UseVisualStyleBackColor = true;
             this.radioButton_fractions.CheckedChanged += new System.EventHandler(this.radioButton_fractions_CheckedChanged);
             // 
-            // tabPage2
+            // tabPage_geom
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.radioButton_shapes);
-            this.tabPage2.Controls.Add(this.radioButton_qua);
-            this.tabPage2.Controls.Add(this.radioButton_angles);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(273, 213);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Geometry";
+            this.tabPage_geom.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_geom.Controls.Add(this.radioButton_shapes);
+            this.tabPage_geom.Controls.Add(this.radioButton_qua);
+            this.tabPage_geom.Controls.Add(this.radioButton_angles);
+            this.tabPage_geom.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_geom.Name = "tabPage_geom";
+            this.tabPage_geom.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_geom.Size = new System.Drawing.Size(273, 209);
+            this.tabPage_geom.TabIndex = 1;
+            this.tabPage_geom.Text = "Geometry";
             // 
             // radioButton_shapes
             // 
@@ -666,91 +766,8 @@
             this.textBox_info_error.Multiline = true;
             this.textBox_info_error.Name = "textBox_info_error";
             this.textBox_info_error.ReadOnly = true;
-            this.textBox_info_error.Size = new System.Drawing.Size(100, 214);
+            this.textBox_info_error.Size = new System.Drawing.Size(100, 216);
             this.textBox_info_error.TabIndex = 2;
-            // 
-            // radioButton_Junior
-            // 
-            this.radioButton_Junior.AutoSize = true;
-            this.radioButton_Junior.Location = new System.Drawing.Point(144, 21);
-            this.radioButton_Junior.Name = "radioButton_Junior";
-            this.radioButton_Junior.Size = new System.Drawing.Size(53, 17);
-            this.radioButton_Junior.TabIndex = 2;
-            this.radioButton_Junior.TabStop = true;
-            this.radioButton_Junior.Text = "Junior";
-            this.radioButton_Junior.UseVisualStyleBackColor = true;
-            this.radioButton_Junior.CheckedChanged += new System.EventHandler(this.radioButton_Junior_CheckedChanged);
-            // 
-            // radioButton_Basic
-            // 
-            this.radioButton_Basic.AutoSize = true;
-            this.radioButton_Basic.Location = new System.Drawing.Point(144, 43);
-            this.radioButton_Basic.Name = "radioButton_Basic";
-            this.radioButton_Basic.Size = new System.Drawing.Size(51, 17);
-            this.radioButton_Basic.TabIndex = 2;
-            this.radioButton_Basic.TabStop = true;
-            this.radioButton_Basic.Text = "Basic";
-            this.radioButton_Basic.UseVisualStyleBackColor = true;
-            this.radioButton_Basic.CheckedChanged += new System.EventHandler(this.radioButton_Basic_CheckedChanged);
-            // 
-            // radioButton_Advanced
-            // 
-            this.radioButton_Advanced.AutoSize = true;
-            this.radioButton_Advanced.Location = new System.Drawing.Point(144, 66);
-            this.radioButton_Advanced.Name = "radioButton_Advanced";
-            this.radioButton_Advanced.Size = new System.Drawing.Size(74, 17);
-            this.radioButton_Advanced.TabIndex = 2;
-            this.radioButton_Advanced.TabStop = true;
-            this.radioButton_Advanced.Text = "Advanced";
-            this.radioButton_Advanced.UseVisualStyleBackColor = true;
-            this.radioButton_Advanced.CheckedChanged += new System.EventHandler(this.radioButton_Advanced_CheckedChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(141, 5);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Complexity";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(174, 19);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(57, 13);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "Complexity";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 3);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Actions";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(42, 13);
-            this.label13.TabIndex = 9;
-            this.label13.Text = "Actions";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Separeted by coma or single",
-            "Numbers by range"});
-            this.comboBox2.Location = new System.Drawing.Point(167, 86);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(88, 21);
-            this.comboBox2.TabIndex = 12;
             // 
             // TabOptions
             // 
@@ -767,19 +784,20 @@
             this.algebraTab.ResumeLayout(false);
             this.tabPage_basic.ResumeLayout(false);
             this.tabPage_basic.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
+            this.tabPage_alg.ResumeLayout(false);
             this.algebra_tabs.ResumeLayout(false);
             this.tabPage_alg_simple.ResumeLayout(false);
             this.tabPage_alg_simple.PerformLayout();
             this.tabPage_alg_middle.ResumeLayout(false);
+            this.tabPage_alg_middle.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.group_box_regro.ResumeLayout(false);
             this.group_box_regro.PerformLayout();
             this.tabPage_alg_hard.ResumeLayout(false);
             this.tabPage_alg_hard.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPage_geom.ResumeLayout(false);
+            this.tabPage_geom.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -788,8 +806,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl algebraTab;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage_alg;
+        private System.Windows.Forms.TabPage tabPage_geom;
         private System.Windows.Forms.TabPage tabPage_basic;
         private System.Windows.Forms.TabControl algebra_tabs;
         private System.Windows.Forms.TabPage tabPage_alg_simple;
@@ -815,9 +833,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox group_box_regro;
-        private System.Windows.Forms.RadioButton radioButton_regr_adv;
-        private System.Windows.Forms.RadioButton radioButton_regr_bas;
-        private System.Windows.Forms.RadioButton radioButton_regr_jun;
         private System.Windows.Forms.CheckBox check_box_regr_mult;
         private System.Windows.Forms.CheckBox check_box_regr_sub;
         private System.Windows.Forms.CheckBox check_box_regr_add;
@@ -843,7 +858,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_alg_simpl_adv;
+        private System.Windows.Forms.TextBox textBox_alg_mid_regr_scnd;
+        private System.Windows.Forms.TextBox textBox_alg_mid_regr_frst;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox comboBox_percent;
     }
 }

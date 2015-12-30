@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using test;
 
 namespace test
 {
@@ -15,31 +17,52 @@ namespace test
         public static T List_GetRandomNumber<T>(List<T> potential_numbers)
         {
             Random rand = new Random();
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             T result = potential_numbers[index];
             return result;
         }
     }
     class MathTemplate
     {
+        public static int GenerateRandomNumber(int min, int max)
+        {
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            byte[] buffer = new byte[4];
+
+            rng.GetBytes(buffer);
+            int result = BitConverter.ToInt32(buffer, 0);
+
+            return new Random(result).Next(min, max);
+        }
+        public static int GenerateRandomNumber(int max)
+        {
+            int min = 0;
+            if (max == 0) return 0;
+            RNGCryptoServiceProvider c = new RNGCryptoServiceProvider();
+            // Integer 4 Byte
+            byte[] randomNumber = new byte[4];
+            // Array with Random Bytes
+            c.GetBytes(randomNumber);
+            // Byte-Array to Integer
+            int result = Math.Abs(BitConverter.ToInt32(randomNumber, 0));
+            // Max. randomnumber Min. randomnumber
+            return result % max + min;
+        }
         public static string MathFact_Jr(string input, char sign)
         {
             jr_key_interpr key = new jr_key_interpr(input);
-
             return GenerateString(key, sign);
         }
 
         public static string MathFact_Basic(string input, char sign)
         {
             basic_key_interpr key = new basic_key_interpr(input);
-
             return GenerateString(key, sign);
         }
 
         public static string MathFact_Advanced(string input, char sign)
         {
             advanced_key_interpr key = new advanced_key_interpr(input);
-
             return GenerateString(key, sign);
         }
 
@@ -51,7 +74,7 @@ namespace test
             Random rand = new Random();
             char[] arr_chars = { '+', '-', '*', '/' };
             List<char> potential_signs = new List<char>(arr_chars);
-            int index = rand.Next(potential_signs.Count);
+            int index = GenerateRandomNumber(potential_signs.Count);
             char sign = potential_signs[index];
 
             return GenerateString(key, sign);
@@ -207,7 +230,7 @@ namespace test
             {
                 case '+':
                     {
-                        first_nmb = rand.Next(0, result);
+                        first_nmb = GenerateRandomNumber(0, result);
                         second_nmb = result - first_nmb;
 
                         output = first_nmb.ToString() + " + " + second_nmb.ToString();
@@ -215,7 +238,7 @@ namespace test
                     }
                 case '-':
                     {
-                        first_nmb = rand.Next(result, result + 20);
+                        first_nmb = GenerateRandomNumber(result, result + 20);
                         second_nmb = first_nmb - result;
 
                         output = first_nmb.ToString() + " - " + second_nmb.ToString();
@@ -223,7 +246,7 @@ namespace test
                     }
                 case '/':
                     {
-                        second_nmb = rand.Next(1, 10);
+                        second_nmb = GenerateRandomNumber(1, 10);
                         first_nmb = second_nmb * result;
 
                         output = first_nmb.ToString() + " / " + second_nmb.ToString();
@@ -254,7 +277,7 @@ namespace test
             {
                 case '+':
                     {
-                        first_nmb = rand.Next(0, result);
+                        first_nmb = GenerateRandomNumber(0, result);
                         second_nmb = result - first_nmb;
 
                         output = first_nmb.ToString() + "\n + " + second_nmb.ToString();
@@ -262,7 +285,7 @@ namespace test
                     }
                 case '-':
                     {
-                        first_nmb = rand.Next(result, result + 20);
+                        first_nmb = GenerateRandomNumber(result, result + 20);
                         second_nmb = first_nmb - result;
 
                         output = first_nmb.ToString() + "\n - " + second_nmb.ToString();
@@ -295,7 +318,7 @@ namespace test
             {
                 potential_numbers.Add(i);
             }
-            int index = rand.Next(potential_numbers.Count);
+            int index = GenerateRandomNumber(potential_numbers.Count);
             startNumber = potential_numbers[index];
 
             output = String.Format("{0},{1},\n{2},{3}", startNumber, startNumber + distance, 
@@ -329,14 +352,14 @@ namespace test
                 //Випадок гострого кута
                 case 2:
                     {
-                        final_angle = rand.Next(1, 89);
+                        final_angle = GenerateRandomNumber(1, 89);
                         return final_angle.ToString() + (char)176;
                     }
 
                 //Випадок тупого кута
                 case 3:
                     {
-                        final_angle = rand.Next(91, 179);
+                        final_angle = GenerateRandomNumber(91, 179);
                         return final_angle.ToString() + (char)176;
                     }
             }
@@ -355,26 +378,26 @@ namespace test
             {
                 case 1:
                     {
-                        first_coordinate = rand.Next(0, 999);
-                        second_coordinate = rand.Next(0, 999);
+                        first_coordinate = GenerateRandomNumber(0, 999);
+                        second_coordinate = GenerateRandomNumber(0, 999);
                         break;
                     }
                 case 2:
                     {
-                        first_coordinate = rand.Next(0, 999);
-                        second_coordinate = rand.Next(-999, 0);
+                        first_coordinate = GenerateRandomNumber(0, 999);
+                        second_coordinate = GenerateRandomNumber(-999, 0);
                         break;
                     }
                 case 3:
                     {
-                        first_coordinate = rand.Next(-999, 0);
-                        second_coordinate = rand.Next(-999, 0);
+                        first_coordinate = GenerateRandomNumber(-999, 0);
+                        second_coordinate = GenerateRandomNumber(-999, 0);
                         break;
                     }
                 case 4:
                     {
-                        first_coordinate = rand.Next(-999, 0);
-                        second_coordinate = rand.Next(0, 999);
+                        first_coordinate = GenerateRandomNumber(-999, 0);
+                        second_coordinate = GenerateRandomNumber(0, 999);
                         break;
                     }
             }
@@ -408,21 +431,21 @@ namespace test
                 // Ідентифікатор трикутника
                 case 3:
                     {
-                        int index = rand.Next(_3Sides.Count);
+                        int index = GenerateRandomNumber(_3Sides.Count);
                         output = _3Sides[index];
                         break;
                     }
                 // Ідентифікатор чотирикутника
                 case 4:
                     {
-                        int index = rand.Next(_4Sides.Count);
+                        int index = GenerateRandomNumber(_4Sides.Count);
                         output = _4Sides[index];
                         break;
                     }
                 // Ідентифікатор багатокутника
                 case 5:
                     {
-                        int index = rand.Next(MoreSides.Count);
+                        int index = GenerateRandomNumber(MoreSides.Count);
                         output = MoreSides[index];
                         break;
                     }
@@ -441,8 +464,10 @@ namespace test
                 if (number % i == 0) dividers.Add(i);
             }
 
-            int index = rand.Next(dividers.Count);
-            int divider = dividers[index];
+            int index = GenerateRandomNumber(dividers.Count);
+            int divider = 1;
+            if(dividers.Count != 0)
+                divider = dividers[index];
             return divider;
         }
     }
@@ -463,7 +488,7 @@ namespace test
 
         public override int GetResult()
         {
-            int temp = rand.Next(0, 2);
+            int temp = MathTemplate.GenerateRandomNumber(0, 2);
             if (temp == 0) return first_nmb;
             else return second_nmb;
         }
@@ -522,7 +547,7 @@ namespace test
         {
             if (!isSingleNum)
             {
-                int index = rand.Next(potential_numbers.Count);
+                int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
                 result = potential_numbers[index];
             }
             return result;
@@ -607,7 +632,7 @@ namespace test
 
         public override int GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             result = potential_numbers[index];
             return result;
         }
@@ -638,7 +663,7 @@ namespace test
 
         public override int GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             result = potential_numbers[index];
             return result;
         }
@@ -649,20 +674,22 @@ namespace test
     {
         int result = 0;
         Random rand = new Random();
+        int first_number = 0;
+        int second_number = 0;
         List<int> potential_numbers = new List<int>();
         public regrouping_interpr(string s1)
         {
-            int first_number = 0;
-            int second_number = 0;
             string[] all_words = s1.Split(' ');
             first_number = int.Parse(all_words[1]);
             second_number = int.Parse(all_words[3]);
 
-            result = rand.Next(first_number, second_number);
+            //result = MathTemplate.GenerateRandomNumber(first_number, second_number);
+            //result = rand.Next(first_number, second_number +1);
         }
 
         public override int GetResult()
         {
+            result = MathTemplate.GenerateRandomNumber(first_number, second_number);
             return result;
         }
     }
@@ -690,7 +717,7 @@ namespace test
 
         public override int GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             result = potential_numbers[index];
             return result;
         }
@@ -762,7 +789,7 @@ namespace test
 
         public override int GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             result = potential_numbers[index];
             return result;
         }
@@ -861,7 +888,7 @@ namespace test
 
         public override int GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             result = potential_numbers[index];
             return result;
         }
@@ -884,7 +911,7 @@ namespace test
         {
             if ((s1.ToLower()).Contains("whole"))
             {
-                final_denominator = final_numerator = rand.Next(1, 999);
+                final_denominator = final_numerator = MathTemplate.GenerateRandomNumber(1, 999);
                 return;
             }
             string[] words = s1.Split(' ');
@@ -897,7 +924,7 @@ namespace test
             {
                 potential_denominators.Add(i);
             }
-            int index_denominator = rand.Next(potential_denominators.Count);
+            int index_denominator = MathTemplate.GenerateRandomNumber(potential_denominators.Count);
             final_denominator = potential_denominators[index_denominator];
             multiplier = final_denominator / denominator;
             final_numerator *= multiplier;
@@ -974,7 +1001,8 @@ namespace test
             for (int i = start; i < number * 100 + 100; i++)
                 potential_numbers.Add(i);
 
-            answer = List_GetRandomNumber<int>(potential_numbers);
+            answer = test.GenereteNumbers.Get_AND_Remove_Random_Element<int>(potential_numbers);
+            potential_numbers.Clear();
             return answer;
         }
 
@@ -995,7 +1023,8 @@ namespace test
                 count++;
             }
 
-            answer = List_GetRandomNumber<int>(potential_numbers);
+            answer = test.GenereteNumbers.Get_AND_Remove_Random_Element<int>(potential_numbers);
+            potential_numbers.Clear();
             return answer;
         }
 
@@ -1006,7 +1035,8 @@ namespace test
             for (int i = number; i < 1000; i += 10)
                 potential_numbers.Add(i);
 
-            answer = List_GetRandomNumber<int>(potential_numbers);
+            answer = test.GenereteNumbers.Get_AND_Remove_Random_Element<int>(potential_numbers);
+            potential_numbers.Clear();
             return answer;
         }
 
@@ -1017,10 +1047,18 @@ namespace test
 
             if (isOnes)
             {
-                output_string += input_string[0];
-                output_string += ".";
-                output_string += input_string[1];
-                output_string += input_string[2];
+                if (input_string.Length == 2)
+                {
+                    output_string += input_string[0];
+                    output_string += ".";
+                    output_string += input_string[1];
+                    output_string += input_string[2];
+                }else
+                {
+                    output_string += input_string[0];
+                    output_string += ".";
+                    output_string += input_string[1];
+                }
             }
             else if (isTens)
             {
@@ -1077,9 +1115,24 @@ namespace test
 
                 for(int i = 1; i < all_words.Length; i++)
                 {
-                    if (all_words[i] == "ones") isOnes = true;
-                    else if (all_words[i] == "tenths") isTens = true;
-                    else if (all_words[i] == "hundredths") isHundreds = true;
+                    if (all_words[i] == "ones")
+                    {
+                        isOnes = true;
+                        isTens = false;
+                        isHundreds = false;
+                    }
+                    if (all_words[i] == "tenths")
+                    {
+                        isOnes = false;
+                        isTens = true;
+                        isHundreds = false;
+                    }
+                    if (all_words[i] == "hundredths")
+                    {
+                        isOnes = false;
+                        isTens = false;
+                        isHundreds = true;
+                    }
                 }
 
                 if(isOnes)
@@ -1179,7 +1232,11 @@ namespace test
                 {
                     if (i.ToString() == percent)
                     {
-                        string number = "0.";
+                        string number = "";
+                        if(i < 10)
+                            number = "0.0";
+                        else
+                            number = "0.";
                         number += i.ToString();
                         potential_numbers.Add(number);
                         break;
@@ -1209,7 +1266,7 @@ namespace test
                 for (int i = 0; i < temp.Length - 1; i++)
                     second_num += temp[i];
 
-                int percent = rand.Next(int.Parse(first_num), int.Parse(second_num));
+                int percent = MathTemplate.GenerateRandomNumber(int.Parse(first_num), int.Parse(second_num));
 
                 input.numerator = percent;
                 input.denominator = 100;
@@ -1222,7 +1279,11 @@ namespace test
                 {
                     if (i == percent)
                     {
-                        string number = "0.";
+                        string number = "";
+                        if (i < 10)
+                            number = "0.0";
+                        else
+                            number = "0.";
                         number += i.ToString();
                         potential_numbers.Add(number);
                         break;
@@ -1241,7 +1302,7 @@ namespace test
         }
         public new string GetResult()
         {
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             string temp = potential_numbers[index].ToString();
             result = temp;
             return result;
@@ -1314,7 +1375,7 @@ namespace test
             potential_numbers = potential_numbers.Distinct().ToList();
 
             //Випадково вибираємо число
-            int index = rand.Next(potential_numbers.Count);
+            int index = MathTemplate.GenerateRandomNumber(potential_numbers.Count);
             string temp = potential_numbers[index];
             final_num += temp[0];
             final_num += ".";

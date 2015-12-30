@@ -20,7 +20,7 @@ namespace test
             
             public enum complexity
             {
-                JUNIOR, BASIC, ADVANCED, NONE
+                JUNIOR, BASIC, ADVANCED, ADVANCED_COMA, ADVANCED_HYPHEN, NONE
             };
             public enum fractions
             {
@@ -42,34 +42,37 @@ namespace test
             public algebra_middle_round active_algebra_middle_round = algebra_middle_round.NONE;
         }
         public options op = new options();
-        public string active_mode_name = "";
         public class field
         {
             public int heigth;
             public int width;
+            public int mudslide_for_hskroll;
+            public int mudslide_for_vskroll;
             public int size_rect;
-            public List<List<SolidBrush>> clr_fild;
+            public List<List<Color>> clr_fild;
             public List<List<string>> str_fild;
             public field()
             {
+                int max_width_heigth = 40;
                 width = 20;
                 heigth = 20;
-                clr_fild = new List<List<SolidBrush>>();
+                mudslide_for_hskroll = 0;
+                mudslide_for_vskroll = 0;
+                clr_fild = new List<List<Color>>();
                 str_fild = new List<List<string>>();
                 size_rect = 30;
-                for (int i = 0; i <= width; i++)
+                for (int i = 0; i <= max_width_heigth; i++)
                 {
-                    clr_fild.Add(new List<SolidBrush>());
+                    clr_fild.Add(new List<Color>());
                     str_fild.Add(new List<string>());
-                    for(int j = 0; j <= heigth;j++){
-                        clr_fild[i].Add(new SolidBrush(Color.Transparent));
+                    for (int j = 0; j <= max_width_heigth; j++)
+                    {
+                        clr_fild[i].Add(Color.Transparent);
                         str_fild[i].Add(" ");
                     }
                 }
             }
         }
-        
-        public string example_for_input = "3 or 6";
         public class key
         {
             public string str = "";
@@ -81,26 +84,23 @@ namespace test
             }
         }
         public bool isLbuttonDown = false;
+        public bool isRbuttonDown = false;
         public bool clean_colors = false;
-        public SolidBrush active_rc_color = new SolidBrush(Color.Brown);
+        public Color active_rc_color = Color.Brown;
         public field field_ex = new field();
         public List<key> keys;
+        public List<Color> main_colors = new List<Color>();
         public char sign = '+';
         public ToolStripMenuItem checked_item_in_tmpl_menu;
         public List<string> vadil_data;
         public bool auto_generate = false;
-        public Workspace(int height = 20, int width = 20)
+        public int delta_for_open_image = 130;
+        public Workspace()
         {
             keys = new List<key>();
-            keys.Add(new Workspace.key("0 or 11", Color.Tan));
-            keys.Add(new Workspace.key("1 or 3", Color.Brown));
-            keys.Add(new Workspace.key("4 or 6", Color.Orange));
-            keys.Add(new Workspace.key("7 or 9", Color.Green));
-            keys.Add(new Workspace.key("10 or 3", Color.Blue));
-
-            
+            keys.Add(new Workspace.key("", Color.Tan));
+            keys.Add(new Workspace.key("", Color.Brown));
         }
-
         
 
     }

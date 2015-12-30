@@ -53,11 +53,24 @@
     <Compile Include="GenerateInputString.cs" />
     <Compile Include="GenereteNumbers.cs" />
     <Compile Include="MathTemplate.cs" />
-    <Compile Include="Options.cs">
+    <Compile Include="OpenSave.cs" />
+    <Compile Include="Pdf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Options.Designer.cs">
-      <DependentUpon>Options.cs</DependentUpon>
+    <Compile Include="Pdf.Designer.cs">
+      <DependentUpon>Pdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaveAsImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveAsImage.Designer.cs">
+      <DependentUpon>SaveAsImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewProperties.Designer.cs">
+      <DependentUpon>ViewProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,8 +84,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Options.resx">
-      <DependentUpon>Options.cs</DependentUpon>
+    <EmbeddedResource Include="Pdf.resx">
+      <DependentUpon>Pdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveAsImage.resx">
+      <DependentUpon>SaveAsImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewProperties.resx">
+      <DependentUpon>ViewProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,6 +117,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxPDFXCviewAxLib">
+      <Guid>{2E19D395-7974-480B-9E28-CF1D7536983F}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxPDFXEdit">
+      <Guid>{0AAFF38C-CB91-4424-A8B9-F8B504ACBE0C}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="PDFXCviewAxLib">
+      <Guid>{2E19D395-7974-480B-9E28-CF1D7536983F}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="PDFXEdit">
+      <Guid>{0AAFF38C-CB91-4424-A8B9-F8B504ACBE0C}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
